@@ -1,0 +1,79 @@
+<template>
+  <div id="footer">
+    <p class="item">
+      {{ context }}
+      <a
+        href="http://10.0.4.11:8090/"
+        target="_blank"
+        rel="noopener noreferrer"
+        >{{ title }}</a
+      >
+      -
+      <a
+        href="https://beian.miit.gov.cn"
+        target="_blank"
+        rel="noopener noreferrer nofollow"
+        >{{ nms }}</a
+      >
+    </p>
+    <p class="item">
+      本站点由腾讯云提供云服务
+    </p>
+    <p class="item">
+      <img style="width: 18px; height: 18px; display: inline-block; top: 3px; position: relative;"
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAAABGdBTUEAALGPC/xhBQAAAwBQTFRFtJR+///krYt6n2hV0a52/b9Ummlc2aht27qH//eX26xi8Na74bNo+M562rB75MGP5LaA5LaC47xp68l57N2y/vrs369n/++G1qx+/tiP6sN6+//e//nQ79l/+NqC6MZ87NmN+PPJ3qdc3alT25xR46xT57xs69KY57Vcw38+2a+C05NwyoRb6che5LxZ5MJt7d6A4bBn0Ktx+/TQ3KdZ8d/H9N+L7+ij8+mS9/O48deu///i7NOF+fG28+eq/vzgAAAAgVg6o31ShGlK7HEtxGsznl8wp41Z+sREcoWUHD6XlIx1xa58tYA/6Zc09oI24kYeo5mEBAVtbmJiNhpNtJlYAAiR96Q53bZp2U4qFzCJa3OEeWRg14pGxb2H/+Jj0RUKvbp+7XE02Mx3AABqzcJxfHp502U9CwZn/7VJzng6/Mxk24Y43Z9CXllm2QAG8F4eu0wo07yHuk0kk2A2yrZ4aX6O9LBA4JU504c9+9Jv46pKABB65G82vwAR2203YB5Q118zzCcT/S0U1Ugq00AmzaxSxicTTg5OxVIkyz0h/SsKDABdzD4txBgKrKJzjYZ3/75gQiREVDhTyQACaQI2XF94wQwLqbSRzxcR0QwR+59GuYtYABuOTAA5tgAQxj4dsQ4OAABhtKNm1JY94qlXyVkqbHmKVk5vzywa/I4sTjVP/9JmhI+Z8K9I1sB41jEfvZBe0iEa83wo7cJi/+9t/9hN469L1hoX6KA945M925tF+MRY15FT2J5Y8M1k67tc3oMy8dNp1XQo1o480oM92pZK68Vd5rZW5sBV6cpt7tRw6K5J7LlP6bFL6bdS7r5Q6L9O4KRM6LlP8slW58Rm6F8mAACAlI+B0zgiAAR33pBE13U41mUw2kko1AMJ6YI+8stuAABm/sVSORQ4cniCk3ha/9te4rJT5L5R8Nh21ZBG5bFQ3qNJ57ta3plE7c1m7Mlb6cFg6r1Z7cph68BX5rlZ6cZe9eNzAABuzgACAAB51z4g1h8Y/9JY5LVdEd5zqQAAAEF0Uk5TyxjR92/D++WYNfUc+cGpn7HH4MSDIdu+rrLmKUzsMPsnWsbG0uS8jOScSBRd8PTs4ecCXOtBunyrAmkclEJBCABK/YzMAAABgElEQVQY02NwgABGKwYmK2sohwFM2vIxuzk6O7FJyCAE7Tc+KXG95hLR/2SOPUzQmnf1s833b0b+mj1jsqQ9RFCaJyRv1aa/K+/NnD4xepKUAliQ0/u6e8H9DTtm3ZxyLfHnBDmQIDfrjVu+Afl///z5++tP8s80cVGgIEt44PVQ/1/Llry8nZCU+vPGPxGgIIefT1iwR/GCu3fqY+NjfseV8wMF2XMeegUVPmjpamytTc+IelUhBhTkysr0/D2/+27nnQfNdSlljyuFgIICudlFc+ct7Gtvutc7taa06oUNUFDw9tI1a289WtTR0PPo99Pn/6uFgYLy+/buerj+2fLFbdNWPN2yc/d2WaCg4su3rw/veb7t8bp/W/8dfP3iox3IR8a6J48e+XDgzbv9h94fO6VvC/amqeH37ye+Hv/05fPbb6evmtiBBc1+vPr///ObT+ffX/r27sMPC7CgvY3e5SsXzp098/XjxS8G5pbQQNbW0VRWUdVQUlPXMgLxASGRxIfJhdfLAAAAAElFTkSuQmCC"
+        alt=""
+      />
+      <a
+        href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode="
+        target="_blank"
+        rel="noopener noreferrer nofollow"
+        >{{ IP }}</a
+      >
+    </p>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      context: "2023 @",
+      title: "Cold的窝",
+      nms: "赣ICP备2022010266号-3",
+      IP: "赣公网安备36042302000157号",
+    };
+  },
+};
+</script>
+
+<style scoped>
+#footer {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-size: 13px;
+  color: #909399;
+  background-color: white;
+  align-items: center;
+}
+
+.item * {
+  height: 19px;
+  color: #909399;
+  margin: 0px 5px;
+}
+.item a {
+  text-decoration: none;
+  transition: all 0.35s ease;
+}
+.item a:hover {
+  color: #fb6c28;
+}
+#footer p {
+  margin: 0;
+}
+</style>
