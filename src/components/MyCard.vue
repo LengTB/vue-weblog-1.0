@@ -2,22 +2,33 @@
   <div>
     <div class="card">
       <div class="logo">
-        <img src="@/assets/logo.jpg" alt="" />
+        <img :src="logoUrl" alt=""/>
         <div class="transition"></div>
       </div>
       <div class="name">{{ name }}</div>
-      <div class="logion">{{ logion }}</div>
+      <div class="logion">{{ signature }}</div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["logo", "name", "logion"],
+  /**
+   * 参数：
+   * name           名称
+   * signature      个性签名  
+   */
+  props: ["name", "signature"],
   data() {
-    return {};
+    return {
+      //这是获取qq头像的api
+      logoUrl:"https://tenapi.cn/v2/qqimg?qq="
+    };
   },
   mounted() {
+
+    //这里从仓库拿qq来渲染头像
+    this.logoUrl = this.logoUrl + this.$store.state.qq;
   },
   computed: {
     logoCss() {
@@ -52,6 +63,7 @@ export default {
   display: block;
   height: 100px;
   margin: auto;
+  padding: 5px;
 }
 .card .name {
   font-size: 20px;

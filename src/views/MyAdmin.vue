@@ -93,13 +93,14 @@ export default {
         alert("请输入账号和密码");
       } else {
         axios
-          .post("http://127.0.0.1:8888/console/login", {
+          .post(this.$store.state.domain + "/console/login", {
             account: this.text,
             password: this.password,
           })
           .then((ref) => {
             if (ref.data.code == 1) {
-              this.$store.state.token = ref.data.data;
+              //登录成功，设置token
+              this.$store.commit("setToken", ref.data.data);
               this.$router.push("/");
             } else {
               this.$router.go(0);

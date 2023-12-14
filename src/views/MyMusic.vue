@@ -82,22 +82,22 @@ export default {
         {
           name: "富士山下",
           date: "陈奕迅",
-          url: "http://127.0.0.1:8888/data/20230520/music1.m4a",
+          url: this.$store.state.domain + "/data/20230520/music1.m4a",
         },
         {
           name: "富士山下",
           date: "陈奕迅",
-          url: "http://127.0.0.1:8888/data/20230520/music1.m4a",
+          url: this.$store.state.domain + "/data/20230520/music1.m4a",
         },
         {
           name: "富士山下",
           date: "陈奕迅",
-          url: "http://127.0.0.1:8888/data/20230520/music1.m4a",
+          url: this.$store.state.domain + "/data/20230520/music1.m4a",
         },
         {
           name: "富士山下",
           date: "陈奕迅",
-          url: "http://127.0.0.1:8888/data/20230520/music1.m4a",
+          url: this.$store.state.domain + "/data/20230520/music1.m4a",
         },
         {
           name: "富士山下",
@@ -128,7 +128,7 @@ export default {
     };
   },
   created() {
-    axios.get("http://127.0.0.1:8888/musics").then((res) => {
+    axios.get(this.$store.state.domain + "/musics").then((res) => {
       console.log(res.data);
     })
     .catch((err) =>{

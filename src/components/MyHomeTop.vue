@@ -2,8 +2,8 @@
   <div class="top">
     <img src="@/assets/logo.jpg" alt="logo" class="logo" />
     <div class="nav">
-      <div class="item" v-for="(item, index) in linkdata" :key="index">
-        <a :href="item.href" @click="select(index)" :class="selectlect == index ? 'select' : ''">{{ item.name }}</a>
+      <div class="item" v-for="(item, i) in linkdata" :key="i">
+        <a :href="item.href" @click="select(i)" :class="i == index ? 'select' : ''">{{ item.name }}</a>
       </div> 
       <el-button class="login" type="primary" @click="clickLogin" v-show="!login"
         >登录</el-button
@@ -15,18 +15,17 @@
 <script>
 export default {
   props: {
-    a: {
+    index: {
       type: Number,
-      require: false,
+      require: true,
     },
     login:{
       type: Boolean,
-      require: false,
+      require: true,
     }
   },
   data() {
     return {
-      selectlect: 0,
       linkdata: [
         {
           name: "首页",
@@ -52,7 +51,7 @@ export default {
       this.$router.push("/login");
     },
     select(index) {
-      this.selectlect = index;
+      this.$emit('change', index)
     },
   },
   created() {},
