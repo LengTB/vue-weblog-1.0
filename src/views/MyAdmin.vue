@@ -310,7 +310,6 @@ export default {
 .content .form-content .other-login .other-login-wrapper .other-login-item {
   width: 110px;
   height: 30px;
-  padding: 10px;
   text-align: center;
   cursor: pointer;
   font-weight: 600;

@@ -52,7 +52,11 @@ export default {
   created() {
     //验证登录
     this.$axios
-      .get("/console/verify")
+      .get(this.$store.state.domain + "/console/verify", {
+        headers:{
+          'token': this.$store.state.token,
+        }
+      })
       .then((ref) => {
         console.log(ref);
         if (ref.data.state == 200) {
@@ -116,18 +120,12 @@ export default {
 .left .right {
   margin: 50px;
 }
-@media (min-width: 992px) {
-  .context .left {
+@media (max-width: 992px) {
+  .left {
     width: 100%;
   }
-
-  .context .right .card {
+  .right {
     display: none;
-  }
-}
-@media (min-width: 990px) {
-  .context .left {
-    width: 80%;
   }
 }
 </style>
