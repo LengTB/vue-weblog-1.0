@@ -1,0 +1,99 @@
+<template>
+  <div class="stop">
+    <div class="joe_page_404">
+      <div class="error">
+        <img src="@/assets/svg/404.svg" alt="404" />
+        <h3 class="title">“未找到您要的资源”</h3>
+        <a href="/" class="error_link">返回上一页</a>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "ColdStop",
+};
+</script>
+
+<style scoped>
+.joe_page_404 {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  color: #666;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+.joe_page_404 .error {
+  margin-top: -10vh;
+}
+.joe_page_404 img {
+  width: 60%;
+  max-width: 700px;
+}
+.joe_page_404 .title {
+  font-size: 30px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  -webkit-user-select: none;
+  user-select: none;
+  font-weight: 300;
+  color: #888;
+}
+.joe_page_404 .error_link {
+  padding: 12px 36px;
+  font-size: 14px;
+  text-decoration: none;
+  -webkit-user-select: none;
+  user-select: none;
+  color: #999;
+  border: 1px solid #999;
+  border-radius: 100px;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+.joe_page_404 .error_link:hover {
+  color: #6c63ff;
+  border-color: #6c63ff;
+}
+@media screen and (max-width: 500px) {
+  .joe_page_404 .title {
+    font-size: 20px;
+  }
+  .joe_page_404 .error_link {
+    padding: 10px 30px;
+  }
+}
+@media screen and (max-height: 500px) {
+  .joe_page_404 .title {
+    font-size: 20px;
+  }
+  .joe_page_404 img {
+    width: 30%;
+  }
+  .joe_page_404 .error_link {
+    padding: 10px 30px;
+  }
+}
+</style>

@@ -99,6 +99,7 @@ header {
   filter: brightness(0.95);
 }
 header .text {
+  font-family: YeZiGongChangAoYeHei;
   position: absolute;
   top: 50%;
   left: 50%;

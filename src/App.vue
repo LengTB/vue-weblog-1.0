@@ -27,6 +27,15 @@ export default {
   font-family: "YeZiGongChangAoYeHei";
   src: url("@/assets/YeZiGongChangAoYeHei-2.ttf");
 }
+@font-face {
+  font-family: "ShenHaiLiDeXingChen";
+  src: url("@/assets/ShenHaiLiDeXingChen-2.ttf");
+}
+
+@font-face {
+  font-family: "方正行黑简体";
+  src: url("@/assets/方正行黑简体.TTF");
+}
 body {
   margin: 0;
   padding: 0;

@@ -6,32 +6,48 @@ Vue.use(VueRouter)
 
 //创建router对象
 
-import MyHome from '@/views/MyHome.vue'
-import MyLogin from '@/views/MyAdmin.vue'
-import MyAbout from '@/views/MyAbout'
+import Home from '@/views/Home.vue'
+import About from '@/views/About.vue'
+import Play from '@/views/Dome1.vue'
 
 const router = new VueRouter({
     routes: [
         {
             path: '/',
-            component: MyHome
+            redirect: '/home'
+        },
+        {
+            path: '/home',
+            component: Home
         },
         {
             path: '/about',
-            component: MyAbout
+            component: About
         },
         {
             path: '/login',
-            component: MyLogin
+            component: () => import('@/views/Login.vue')
         },
         {
-            path: '/music',
-            component: () => import('@/views/MyMusic.vue')
+            path: '/play',
+            component: Play
         },
         {
-            path: '/test',
-            component: () => import('@/views/Test.vue')
-        }
+            path: '/console',
+            component: () => import('@/views/Console.vue'),
+            children:[
+                {
+                    path: 'Context',
+                    component: () => import('@/views/console/Context.vue')
+                },
+
+            ]
+
+        },
+        {
+            path: "*",
+            component: () => import('@/views/Stop.vue')
+        },
     ]
 })
 

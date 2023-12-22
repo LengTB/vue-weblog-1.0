@@ -5,19 +5,23 @@
         <img :src="logoUrl" alt="" />
         <div class="transition"></div>
       </div>
-      <div class="name">{{ name }}</div>
-      <div class="logion">{{ signature }}</div>
+      <div class="name">
+        <span>{{context.name }}</span>
+        <img :src="grade" alt="" />
+      </div>
+      <div class="admin" v-show="admin"></div>
+      <div class="logion">{{ context.signature }}</div>
       <div class="message">
         <div class="item">
-          <div>999</div>
+          <div>999+</div>
           <div>评论数</div>
         </div>
         <div class="item">
-          <div>999</div>
+          <div>999+</div>
           <div>标签数</div>
         </div>
         <div class="item">
-          <div>999</div>
+          <div>999+</div>
           <div>文章数</div>
         </div>
       </div>
@@ -70,18 +74,39 @@ export default {
    * name           名称
    * signature      个性签名
    */
-  props: ["name", "signature"],
+  props: ["context"],
   data() {
     return {
       //这是获取qq头像的api
       logoUrl: "https://tenapi.cn/v2/qqimg?qq=",
+      grades: [
+        require("@/assets/grade/0.avif"),
+        require("@/assets/grade/1.avif"),
+        require("@/assets/grade/2.avif"),
+        require("@/assets/grade/3.avif"),
+        require("@/assets/grade/4.avif"),
+        require("@/assets/grade/5.avif"),
+        require("@/assets/grade/6.avif"),
+        require("@/assets/grade/7.avif"),
+        require("@/assets/grade/8.avif"),
+        require("@/assets/grade/9.avif"),
+      ],
     };
   },
+  created() {},
   mounted() {
     //这里从仓库拿qq来渲染头像
     this.logoUrl = this.logoUrl + this.$store.state.qq;
   },
+
+  //计算属性，动态渲染
   computed: {
+    admin() {
+      return this.context.admin;
+    },
+    grade() {
+      return this.grades[this.context.grade];
+    },
     logoCss() {
       return {};
     },
@@ -89,6 +114,14 @@ export default {
 };
 </script>
 <style scoped>
+.admin {
+  width: 100%;
+  height: 35px;
+  margin:10px;
+  background: url("@/assets/grade/common_1_usergroup_icon.gif") no-repeat;
+  background-size: contain;
+  background-position: center;
+}
 .card {
   background-color: rgb(255, 255, 255);
   width: 300px;
@@ -98,7 +131,7 @@ export default {
   align-items: center;
   border-radius: 10px;
   overflow: hidden;
-  font-family: YuTaiXianTangPingTi-2;
+  font-family: YeZiGongChangAoYeHei;
 }
 .card .logo {
   width: 100%;
@@ -109,35 +142,25 @@ export default {
 }
 .card .logo img {
   position: relative;
-  top: 10px;
+  top: 20px;
   border-radius: 50px;
   display: block;
-  height: 100px;
+  height: 88px;
   margin: auto;
-  animation: logo 5s ease-in infinite;
 }
-@keyframes logo {
-  0% {
-    filter: blur(2px);
-  }
-  25% {
-    filter: blur(0px);
-  }
-  50% {
-    filter: blur(2px);
-  }
-  75% {
-    filter: blur(0px);
-  }
-  100% {
-    filter: blur(2px);
-  }
-}
+
 .card .name {
-  font-size: 22px;
-  color: rgb(255, 142, 101);
-  text-shadow: 0 1px 13px #d85826;
-  margin: 10px 0;
+  font-size: 20px;
+  color: rgb(12, 158, 255);
+  text-shadow: 0 1px 13px #17c9e9;
+  margin-top: 18px;
+  margin-bottom: 10px;
+}
+.card .name img {
+  width: 27px;
+  position: absolute;
+  margin-top: 5px;
+  margin-left: 8px;
 }
 .card .logion {
   font-size: 15px;
@@ -166,7 +189,7 @@ export default {
   border-bottom: 1px solid #ccc;
 }
 .item :nth-child(1) {
-  font-size: 19px;
+  font-size: 18px;
 }
 .item :nth-child(2) {
   font-size: 11px;
@@ -175,6 +198,7 @@ export default {
   margin: 10px 0px;
 }
 .transition {
+  z-index: 999;
   height: 20px;
   background: linear-gradient(rgb(0, 0, 0), rgb(255, 255, 255));
 }

@@ -1,4 +1,3 @@
-import cookie from 'vue-cookies'
 const INFO_KEY = 'token'
 
 
@@ -8,7 +7,6 @@ export const getInfo = ()=>{
 }
 export const setInfo = (obj)=>{
     localStorage.setItem(INFO_KEY,obj);
-    cookie.set(INFO_KEY,obj)
 }
 
 export const removeInfo = ()=>{
