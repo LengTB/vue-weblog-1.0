@@ -35,10 +35,23 @@ const router = new VueRouter({
         {
             path: '/console',
             component: () => import('@/views/Console.vue'),
+            redirect: '/console/context',
             children:[
                 {
-                    path: 'Context',
+                    path: 'context',
                     component: () => import('@/views/console/Context.vue')
+                },
+                {
+                    path: 'page',
+                    component: () => import('@/views/console/Page.vue')
+                },
+                {
+                    path: 'comments',
+                    component: () => import('@/views/console/Comments.vue')
+                },
+                {
+                    path: 'annex',
+                    component: () => import('@/views/console/Annex.vue')
                 },
 
             ]

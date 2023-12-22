@@ -30,6 +30,9 @@ export default {
         const bolbData = new Blob([data], { type: "video/mp4" });
         const url = URL.createObjectURL(bolbData);
         this.$refs.video.src = url;
+      })
+      .catch(() => {
+        this.$message.error("请检查网络状况");
       });
   },
   mounted() {},

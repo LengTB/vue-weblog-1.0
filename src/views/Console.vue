@@ -1,12 +1,12 @@
 <template>
   <div class="main">
     <div class="left">
-      <img src="@/assets/logo.jpg" alt="logo" />
+      <img src="@/assets/logo.jpg" alt="logo" @click="goHome"/>
       <router-link to="/" class="item">仪表盘</router-link>
       <div style="margin: 5px 0 5px -180px; font-size: 14px; color: #847e7e">
         <span>用户</span>
       </div>
-      <router-link to="/" class="item">
+      <router-link to="context" class="item">
         <div style="display: flex; align-items: center">
           <svg viewBox="0 0 24 24" width="20px" height="20px">
             <path
@@ -17,7 +17,7 @@
           <span style="margin-left: 5px">文章</span>
         </div>
       </router-link>
-      <router-link to="/" class="item">
+      <router-link to="page" class="item">
         <div style="display: flex; align-items: center">
           <svg viewBox="0 0 24 24" width="20px" height="20px">
             <path
@@ -28,7 +28,7 @@
           <span style="margin-left: 5px">页面</span>
         </div></router-link
       >
-      <router-link to="/" class="item">
+      <router-link to="comments" class="item">
         <div style="display: flex; align-items: center">
           <svg viewBox="0 0 24 24" width="20px" height="20px">
             <path
@@ -39,7 +39,7 @@
           <span style="margin-left: 5px">评论</span>
         </div></router-link
       >
-      <router-link to="/" class="item">
+      <router-link to="annex" class="item">
         <div style="display: flex; align-items: center">
           <svg viewBox="0 0 24 24" width="20px" height="20px">
             <path
@@ -54,7 +54,7 @@
       <div style="margin: 5px 0 5px -180px; font-size: 14px; color: #847e7e">
         <span>外观</span>
       </div>
-      <router-link to="/" class="item">
+      <router-link to="annex" class="item">
         <div style="display: flex; align-items: center">
           <svg viewBox="0 0 24 24" width="20px" height="20px">
             <path
@@ -65,7 +65,7 @@
           <span style="margin-left: 5px">文章</span>
         </div>
       </router-link>
-      <router-link to="/" class="item">
+      <router-link to="page" class="item">
         <div style="display: flex; align-items: center">
           <svg viewBox="0 0 24 24" width="20px" height="20px">
             <path
@@ -80,7 +80,7 @@
       <div style="margin: 5px 0 5px -180px; font-size: 14px; color: #847e7e">
         <span>系统</span>
       </div>
-      <router-link to="/" class="item">
+      <router-link to="comments" class="item">
         <div style="display: flex; align-items: center">
           <svg viewBox="0 0 24 24" width="20px" height="20px">
             <path
@@ -91,7 +91,7 @@
           <span style="margin-left: 5px">插件</span>
         </div>
       </router-link>
-      <router-link to="/" class="item">
+      <router-link to="annex" class="item">
         <div style="display: flex; align-items: center">
           <svg viewBox="0 0 24 24" width="20px" height="20px">
             <path
@@ -102,7 +102,7 @@
           <span style="margin-left: 5px">用户</span>
         </div></router-link
       >
-      <router-link to="/" class="item">
+      <router-link to="comments" class="item">
         <div style="display: flex; align-items: center">
           <svg viewBox="0 0 24 24" width="20px" height="20px">
             <path
@@ -113,7 +113,7 @@
           <span style="margin-left: 5px">设置</span>
         </div></router-link
       >
-      <router-link to="/" class="item">
+      <router-link to="annex" class="item">
         <div style="display: flex; align-items: center">
           <svg viewBox="0 0 24 24" width="20px" height="20px">
             <path
@@ -124,7 +124,7 @@
           <span style="margin-left: 5px">概况</span>
         </div></router-link
       >
-      <router-link to="/" class="item">
+      <router-link to="annex" class="item">
         <div style="display: flex; align-items: center">
           <svg viewBox="0 0 24 24" width="20px" height="20px">
             <path
@@ -136,60 +136,56 @@
         </div></router-link
       >
       <div class="about">
-        <div>
+        <div class="about-item">
           <div>{{ name }}</div>
-          <div>{{ icon }}</div>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              justify-content: space-evenly;
+              border-shadow: 1px 1px 1px #ccc;
+              border: 1px solid #ccc;
+              border-radius: 5px;
+              text-align: center;
+              margin: 5px;
+            "
+          >
+            <svg viewBox="0 0 24 24" width="1.2em" height="1.2em">
+              <path
+                fill="currentColor"
+                d="M12 14v2a6 6 0 0 0-6 6H4a8 8 0 0 1 8-8zm0-1c-3.315 0-6-2.685-6-6s2.685-6 6-6s6 2.685 6 6s-2.685 6-6 6zm0-2c2.21 0 4-1.79 4-4s-1.79-4-4-4s-4 1.79-4 4s1.79 4 4 4zm2.595 7.812a3.51 3.51 0 0 1 0-1.623l-.992-.573l1-1.732l.992.573A3.496 3.496 0 0 1 17 14.645V13.5h2v1.145c.532.158 1.012.44 1.405.812l.992-.573l1 1.732l-.992.573a3.51 3.51 0 0 1 0 1.622l.992.573l-1 1.732l-.992-.573a3.496 3.496 0 0 1-1.405.812V22.5h-2v-1.145a3.496 3.496 0 0 1-1.405-.812l-.992.573l-1-1.732l.992-.572zM18 19.5a1.5 1.5 0 1 0 0-3a1.5 1.5 0 0 0 0 3z"
+              ></path>
+            </svg>
+            {{ icon }}
+          </div>
         </div>
-        <div>
-          <span>
-            <el-popover
-              placement="top-start"
-              title="标题"
-              width="200"
-              trigger="hover"
-              content="这是一段内容,这是一段内容,这是一段内容,这是一段内容。"
+        <div class="about-item">
+          <span title="个人中心">
+            <svg
+              viewBox="0 0 24 24"
+              width="1.2em"
+              height="1.2em"
+              class="h-5 w-5 text-gray-600 group-hover:text-gray-900"
             >
-              <el-button slot="reference"
-              size="mini"
-              circle
-              class="icon"
-                ><svg
-                  viewBox="0 0 24 24"
-                  width="1.2em"
-                  height="1.2em"
-                  class="h-5 w-5 text-gray-600 group-hover:text-gray-900"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10s-4.477 10-10 10zm-4.987-3.744A7.966 7.966 0 0 0 12 20a7.97 7.97 0 0 0 5.167-1.892A6.979 6.979 0 0 0 12.16 16a6.981 6.981 0 0 0-5.147 2.256zM5.616 16.82A8.975 8.975 0 0 1 12.16 14a8.972 8.972 0 0 1 6.362 2.634a8 8 0 1 0-12.906.187zM12 13a4 4 0 1 1 0-8a4 4 0 0 1 0 8zm0-2a2 2 0 1 0 0-4a2 2 0 0 0 0 4z"
-                  ></path></svg
-              ></el-button>
-            </el-popover>
+              <path
+                fill="currentColor"
+                d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10s-4.477 10-10 10zm-4.987-3.744A7.966 7.966 0 0 0 12 20a7.97 7.97 0 0 0 5.167-1.892A6.979 6.979 0 0 0 12.16 16a6.981 6.981 0 0 0-5.147 2.256zM5.616 16.82A8.975 8.975 0 0 1 12.16 14a8.972 8.972 0 0 1 6.362 2.634a8 8 0 1 0-12.906.187zM12 13a4 4 0 1 1 0-8a4 4 0 0 1 0 8zm0-2a2 2 0 1 0 0-4a2 2 0 0 0 0 4z"
+              ></path>
+            </svg>
           </span>
-          <span>
-            <el-popover
-              placement="top-start"
-              title="标题"
-              width="200"
-              trigger="hover"
-              content="这是一段内容,这是一段内容,这是一段内容,这是一段内容。"
+          <span title="退出登录">
+            <svg
+              viewBox="0 0 24 24"
+              width="1.2em"
+              height="1.2em"
+              offset="100"
+              class="h-5 w-5 text-gray-600 group-hover:text-gray-900"
             >
-              <el-button slot="reference"
-              size="mini"
-              circle
-              class="icon"
-                ><svg
-                  viewBox="0 0 24 24"
-                  width="1.2em"
-                  height="1.2em"
-                  class="h-5 w-5 text-gray-600 group-hover:text-gray-900"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2a9.985 9.985 0 0 1 8 4h-2.71a8 8 0 1 0 .001 12h2.71A9.985 9.985 0 0 1 12 22zm7-6v-3h-8v-2h8V8l5 4l-5 4z"
-                  ></path></svg
-              ></el-button>
-            </el-popover>
+              <path
+                fill="currentColor"
+                d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2a9.985 9.985 0 0 1 8 4h-2.71a8 8 0 1 0 .001 12h2.71A9.985 9.985 0 0 1 12 22zm7-6v-3h-8v-2h8V8l5 4l-5 4z"
+              ></path>
+            </svg>
           </span>
         </div>
       </div>
@@ -211,6 +207,11 @@ export default {
       text: "fa",
     };
   },
+  methods:{
+    goHome(){
+      this.$router.push("/");
+    }
+  }
 };
 </script>
 
@@ -245,13 +246,18 @@ export default {
     position: absolute;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    div {
+    .about-item {
+      margin: 10px;
       span {
+        position: relative;
         color: #847e7e;
-        margin-left: 20px;
-        display: block;
+        margin: 10px;
+      }
+      span :hover {
+        content: "\f00d";
+        color: #000000;
       }
     }
   }

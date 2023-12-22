@@ -2,10 +2,14 @@
   <div class="top">
     <img src="@/assets/logo.jpg" alt="logo" class="logo" />
     <div class="nav">
-      <div class="item" v-for="(item, i) in linkdata" :key="i">
-        <a :href="item.href" @click="select(i)" :class="i == index ? 'select' : ''">{{ item.name }}</a>
-      </div> 
-      <el-button class="login" type="primary" @click="clickLogin" v-show="this.$store.state.login"
+      <router-link class="item" v-for="(item, i) in linkdata" :key="i" :to="item.href">
+        {{ item.name }}
+      </router-link>
+      <el-button
+        class="login"
+        type="primary"
+        @click="clickLogin"
+        v-show="this.$store.state.login"
         >登录</el-button
       >
     </div>
@@ -25,19 +29,19 @@ export default {
       linkdata: [
         {
           name: "首页",
-          href: "#/",
+          href: "/",
         },
         {
-          name: "随笔",
-          href: "#/console",
+          name: "控制台",
+          href: "/console",
         },
         {
-          name: "play",
-          href: "#/play",
+          name: "demo1",
+          href: "/play",
         },
         {
           name: "关于我",
-          href: "#/about",
+          href: "/about",
         },
       ],
     };
@@ -47,24 +51,15 @@ export default {
       this.$router.push("/login");
     },
     select(index) {
-      this.$emit('change', index)
+      this.$emit("change", index);
     },
   },
   created() {},
-  mounted() {
-  },
+  mounted() {},
 };
 </script>
 
-<style scoped>
-
-.logo {
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  margin: 0px 20px;
-  animation: top 1s ease-in;
-}
+<style lang="less" scoped>
 .top {
   height: 50px;
   background-color: rgb(255, 255, 255);
@@ -72,6 +67,53 @@ export default {
   animation: top 1s ease;
   width: 100%;
   position: relative;
+  .logo {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    margin: 0px 20px;
+    animation: top 1s ease-in;
+  }
+  .nav {
+    .item {
+      font-family: YeZiGongChangAoYeHei;
+      height: 50px;
+      line-height: 50px;
+      padding: 0px 10px;
+      a {
+        color: black;
+        text-decoration: none;
+        animation: top 1s ease;
+      }
+      a:hover {
+        color: #fb6c28 !important;
+      }
+      .select {
+        color: #fb6c28 !important;
+        text-shadow: 1px 1px 2px #feb18e, 0 0 1em #f49b72, 0 0 1.2em #f9986a;
+        border-bottom: 3px solid #fb6c28;
+      }
+    }
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    align-items: center;
+    .login:hover {
+      background-color: rgb(173, 67, 48);
+      border-color: rgb(173, 67, 48);
+    }
+    .login {
+      color: white;
+      background-color: tomato;
+      border-color: tomato;
+    }
+    > * {
+      margin: 10px 10px;
+    }
+  }
 }
 @keyframes top {
   from {
@@ -80,50 +122,5 @@ export default {
   to {
     height: 50px;
   }
-}
-
-.nav {
-  height: 100%;
-  position: absolute;
-}
-.nav .item {
-  font-family: YeZiGongChangAoYeHei;
-  height: 50px;
-  line-height: 50px;
-  padding: 0px 10px;
-}
-.nav .item a {
-  color: black;
-  text-decoration: none;
-  animation: top 1s ease;
-}
-.nav .item a:hover {
-  color: #fb6c28 !important;
-}
-.nav .item .select {
-  color: #fb6c28 !important;
-  text-shadow: 1px 1px 2px #feb18e, 0 0 1em #f49b72, 0 0 1.2em #f9986a;
-  border-bottom: 3px solid #fb6c28;
-}
-
-.nav {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  flex-direction: row;
-  align-items: center;
-}
-.nav > * {
-  margin: 10px 10px;
-}
-.nav .login:hover {
-  background-color: rgb(173, 67, 48);
-  border-color: rgb(173, 67, 48);
-}
-.nav .login {
-  font-family: YuTaiXianTangPingTi;
-  color: white;
-  background-color: tomato;
-  border-color: tomato;
 }
 </style>

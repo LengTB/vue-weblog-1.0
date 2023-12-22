@@ -97,17 +97,14 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 .total {
   width: 100%;
   margin: auto;
   display: flex;
   justify-content: center;
 }
-a {
-  color: black;
-  text-decoration: none;
-}
+
 .mycontext {
   font-family: 方正行黑简体;
   display: flex;
@@ -116,30 +113,35 @@ a {
   margin: 20px;
   background-color: white;
   border-radius: 10px;
+  // a {
+  //   color: black;
+  //   text-decoration: none;
+  // }
+  .top {
+    color: #e29300;
+  }
+  .item {
+    padding: 10px;
+    margin: 0px 10px;
+    border-top: solid 1px #ebedf4;
+    word-wrap: break-word;
+    max-height: 200px;
+    a {
+      font-size: 20px;
+      margin-left: 15px;
+      margin-right: 20px;
+      margin-bottom: 15px;
+    }
+    .text {
+      font-family: 方正行黑简体;
+      line-height: 21px;
+      text-indent: 2em;
+      height: 105px;
+      overflow: hidden;
+    }
+  }
 }
-.mycontext .top {
-  color: #e29300;
-}
-.mycontext .item {
-  padding: 10px;
-  margin: 0px 10px;
-  border-top: solid 1px #ebedf4;
-  word-wrap: break-word;
-  max-height: 200px;
-}
-.mycontext .item a {
-  font-size: 20px;
-  margin-left: 15px;
-  margin-right: 20px;
-  margin-bottom: 15px;
-}
-.text {
-  font-family: 方正行黑简体;
-  line-height: 21px;
-  text-indent: 2em;
-  height: 105px;
-  overflow: hidden;
-}
+
 .time {
   font-family: YeZiGongChangAoYeHei;
   display: block;
