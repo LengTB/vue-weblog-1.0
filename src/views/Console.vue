@@ -1,12 +1,16 @@
 <template>
   <div class="main">
     <div class="left">
-      <img src="@/assets/logo.jpg" alt="logo" @click="goHome"/>
+      <img
+        src="@/assets/icon/彩色裸底（logo放大版）.png"
+        alt="logo"
+        @click="goHome"
+      />
       <router-link to="/" class="item">仪表盘</router-link>
       <div style="margin: 5px 0 5px -180px; font-size: 14px; color: #847e7e">
         <span>用户</span>
       </div>
-      <router-link to="context" class="item">
+      <router-link to="/console/context" class="item">
         <div style="display: flex; align-items: center">
           <svg viewBox="0 0 24 24" width="20px" height="20px">
             <path
@@ -17,7 +21,7 @@
           <span style="margin-left: 5px">文章</span>
         </div>
       </router-link>
-      <router-link to="page" class="item">
+      <router-link to="/console/page" class="item">
         <div style="display: flex; align-items: center">
           <svg viewBox="0 0 24 24" width="20px" height="20px">
             <path
@@ -28,7 +32,7 @@
           <span style="margin-left: 5px">页面</span>
         </div></router-link
       >
-      <router-link to="comments" class="item">
+      <router-link to="/console/comments" class="item">
         <div style="display: flex; align-items: center">
           <svg viewBox="0 0 24 24" width="20px" height="20px">
             <path
@@ -39,7 +43,7 @@
           <span style="margin-left: 5px">评论</span>
         </div></router-link
       >
-      <router-link to="annex" class="item">
+      <router-link to="/console/annex" class="item">
         <div style="display: flex; align-items: center">
           <svg viewBox="0 0 24 24" width="20px" height="20px">
             <path
@@ -204,18 +208,20 @@ export default {
     return {
       name: "Administrator",
       icon: "管理员",
-      text: "fa",
     };
   },
-  methods:{
-    goHome(){
+  methods: {
+    goHome() {
       this.$router.push("/");
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style lang="less" scoped>
+.main {
+  min-width: 600px;
+}
 .main > .left {
   background-color: white;
   float: left;
@@ -241,9 +247,7 @@ export default {
   .about {
     height: 55px;
     border-radius: 5px;
-    bottom: 20px;
-    margin: 5px;
-    position: absolute;
+    margin: 100px 5px 5px 5px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -251,12 +255,10 @@ export default {
     .about-item {
       margin: 10px;
       span {
-        position: relative;
         color: #847e7e;
         margin: 10px;
       }
       span :hover {
-        content: "\f00d";
         color: #000000;
       }
     }

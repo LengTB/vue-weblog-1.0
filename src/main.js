@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
+
 import '../src/utils/element-ui'
+import '@/utils/v-md-editor'
 Vue.config.productionTip = false
 
 import router from './router/index.js'

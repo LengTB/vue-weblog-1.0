@@ -17,24 +17,24 @@ export default {
 <style>
 @font-face {
   font-family: "YuTaiXianTangPingTi";
-  src: url("@/assets/YuTaiXianTangPingTi-2.ttf");
+  src: url("@/assets/font/YuTaiXianTangPingTi-2.ttf");
 }
 @font-face {
   font-family: "YeZiGongChangFitFitDaTi";
-  src: url("@/assets/YeZiGongChangFitFitDaTi-2.ttf");
+  src: url("@/assets/font/YeZiGongChangFitFitDaTi-2.ttf");
 }
 @font-face {
   font-family: "YeZiGongChangAoYeHei";
-  src: url("@/assets/YeZiGongChangAoYeHei-2.ttf");
+  src: url("@/assets/font/YeZiGongChangAoYeHei-2.ttf");
 }
 @font-face {
   font-family: "ShenHaiLiDeXingChen";
-  src: url("@/assets/ShenHaiLiDeXingChen-2.ttf");
+  src: url("@/assets/font/ShenHaiLiDeXingChen-2.ttf");
 }
 
 @font-face {
   font-family: "方正行黑简体";
-  src: url("@/assets/方正行黑简体.TTF");
+  src: url("@/assets/font/方正行黑简体.TTF");
 }
 body {
   margin: 0;
@@ -47,5 +47,21 @@ body {
     ),
     linear-gradient(1turn, rgba(60, 10, 30, 0.04) 3%, transparent 0);
   background-size: 20px 20px;
+}
+/*滚动条里面轨道*/
+body::-webkit-scrollbar-track{
+  -webkit-box-shadow: inset 0 0 6px rgba(255, 255, 255, 0);
+  background-color: rgb(255, 255, 255);
+}
+/*定义滚动条整体的样式*/
+body::-webkit-scrollbar{
+  width: 6px;
+  background-color: rgb(255, 255, 255);
+}
+/*滚动条的样式*/
+body::-webkit-scrollbar-thumb{
+	height:20px;
+  background-color: #fb6c28;
+  border-radius: 10px;
 }
 </style>

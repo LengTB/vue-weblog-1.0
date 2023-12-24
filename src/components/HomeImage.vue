@@ -161,6 +161,6 @@ footer {
   width: 100%;
   height: calc(100vh - 65px);
   transition: height 3s ease;
-  background: url("@/assets/bg.png");
+  background: url("@/assets/icon/bg.png");
 }
 </style>

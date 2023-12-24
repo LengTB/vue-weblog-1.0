@@ -1,8 +1,15 @@
 <template>
   <div class="top">
-    <img src="@/assets/logo.jpg" alt="logo" class="logo" />
+    <img src="@/assets/icon/彩色裸底（logo放大版）.png" alt="logo" class="logo" />
     <div class="nav">
-      <router-link class="item" v-for="(item, i) in linkdata" :key="i" :to="item.href">
+      <router-link
+        class="item"
+        v-for="(item, i) in linkdata"
+        :key="i"
+        :to="item.href"
+        exact
+        active-class="active"
+      >
         {{ item.name }}
       </router-link>
       <el-button
@@ -29,7 +36,7 @@ export default {
       linkdata: [
         {
           name: "首页",
-          href: "/",
+          href: "/home",
         },
         {
           name: "控制台",
@@ -80,19 +87,12 @@ export default {
       height: 50px;
       line-height: 50px;
       padding: 0px 10px;
-      a {
-        color: black;
-        text-decoration: none;
-        animation: top 1s ease;
-      }
-      a:hover {
-        color: #fb6c28 !important;
-      }
-      .select {
-        color: #fb6c28 !important;
-        text-shadow: 1px 1px 2px #feb18e, 0 0 1em #f49b72, 0 0 1.2em #f9986a;
-        border-bottom: 3px solid #fb6c28;
-      }
+      color: black;
+      text-decoration: none;
+      animation: top 1s ease;
+    }
+    .item:hover {
+      color: #fb6c28 !important;
     }
     height: 100%;
     position: absolute;
@@ -113,8 +113,14 @@ export default {
     > * {
       margin: 10px 10px;
     }
+    .active {
+      color: #fb6c28 !important;
+      text-shadow: 1px 1px 2px #feb18e, 0 0 1em #f49b72, 0 0 1.2em #f9986a;
+      border-bottom: 3px solid #fb6c28;
+    }
   }
 }
+
 @keyframes top {
   from {
     height: 0px;

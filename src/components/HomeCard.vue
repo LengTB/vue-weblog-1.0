@@ -6,22 +6,22 @@
         <div class="transition"></div>
       </div>
       <div class="name">
-        <span>{{context.name }}</span>
+        <span>{{ context.name }}</span>
         <img :src="grade" alt="" />
       </div>
       <div class="admin" v-show="admin"></div>
       <div class="logion">{{ context.signature }}</div>
       <div class="message">
         <div class="item">
-          <div>999+</div>
+          <div @click="$message.info('功能尚未开发完成，敬请期待！')">999+</div>
           <div>评论数</div>
         </div>
         <div class="item">
-          <div>999+</div>
+          <div @click="$message.info('功能尚未开发完成，敬请期待！')">999+</div>
           <div>标签数</div>
         </div>
         <div class="item">
-          <div>999+</div>
+          <div @click="$message.info('功能尚未开发完成，敬请期待！')">999+</div>
           <div>文章数</div>
         </div>
       </div>
@@ -43,6 +43,7 @@
             role="img"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
+            @click="$router.push('https://tenapi.cn/v2/qq?qq=1187520285')"
           >
             <title>Tencent QQ</title>
             <path
@@ -55,6 +56,7 @@
             role="img"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
+            @click="$router.push('https://space.bilibili.com/2065153621')"
           >
             <title>Bilibili</title>
             <path
@@ -113,11 +115,11 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style lang="less" scoped>
 .admin {
   width: 100%;
   height: 35px;
-  margin:10px;
+  margin: 10px;
   background: url("@/assets/grade/common_1_usergroup_icon.gif") no-repeat;
   background-size: contain;
   background-position: center;
@@ -135,7 +137,7 @@ export default {
 }
 .card .logo {
   width: 100%;
-  background-image: url(@/assets/bg.gif);
+  background-image: url(@/assets/icon/bg.gif);
   background-size: cover;
   background-position: center;
   padding-top: 100px;
@@ -187,16 +189,19 @@ export default {
   flex-direction: row;
   justify-content: space-evenly;
   border-bottom: 1px solid #ccc;
+  .item :nth-child(1) {
+    font-size: 18px;
+    cursor: not-allowed;
+  }
+
+  .item :nth-child(2) {
+    font-size: 11px;
+  }
+  .item > * {
+    margin: 10px 0px;
+  }
 }
-.item :nth-child(1) {
-  font-size: 18px;
-}
-.item :nth-child(2) {
-  font-size: 11px;
-}
-.item > * {
-  margin: 10px 0px;
-}
+
 .transition {
   z-index: 999;
   height: 20px;

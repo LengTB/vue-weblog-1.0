@@ -1,29 +1,29 @@
 <template>
   <div class="home">
     <HomeTop :index="index" @change="chageIndex"></HomeTop>
-    <MyImageTop></MyImageTop>
+    <HomeImage></HomeImage>
     <div class="body">
       <div class="left">
-        <MyContext
+        <HomeContext
           ref="contest"
           :bodys="bodys"
           @handleCurrentChange="getIndex"
-        ></MyContext>
+        ></HomeContext>
       </div>
       <div class="right">
-        <MyCard :context="context" ref="Card"></MyCard>
+        <HomeCard :context="context" ref="Card"></HomeCard>
       </div>
     </div>
-    <MyFooter></MyFooter>
+    <HomeFooter></HomeFooter>
   </div>
 </template>
 
 <script>
 import HomeTop from "@/components/HomeTop.vue";
-import MyImageTop from "@/components/MyImageTop.vue";
-import MyFooter from "@/components/MyFooter.vue";
-import MyContext from "@/components/MyContext.vue";
-import MyCard from "@/components/MyCard.vue";
+import HomeImage from "@/components/HomeImage.vue";
+import HomeFooter from "@/components/HomeFooter.vue";
+import HomeContext from "@/components/HomeContext.vue";
+import HomeCard from "@/components/HomeCard.vue";
 export default {
   name: "ColdHome",
   data() {
@@ -35,10 +35,10 @@ export default {
   },
   components: {
     HomeTop,
-    MyImageTop,
-    MyFooter,
-    MyContext,
-    MyCard,
+    HomeImage,
+    HomeFooter,
+    HomeContext,
+    HomeCard,
   },
   //创建时
   created() {
@@ -64,7 +64,7 @@ export default {
       })
       .then((ref) => {
         if (ref.data.code == 1) {
-          this.$store.commit("setLogin", false)
+          this.$store.commit("setLogin", false);
         }
       })
       .catch(() => {
@@ -77,8 +77,7 @@ export default {
       });
   },
   //挂载完成
-  mounted() {
-  },
+  mounted() {},
   //自定义方法
   methods: {
     chageIndex(index) {
@@ -93,26 +92,45 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+/*滚动条里面轨道*/
+body::-webkit-scrollbar-track{
+  -webkit-box-shadow: inset 0 0 6px rgba(255, 255, 255, 0);
+  background-color: rgb(20, 19, 19);
+}
+/*定义滚动条整体的样式*/
+body::-webkit-scrollbar{
+  width: 6px;
+  background-color: rgb(20, 19, 19);
+}
+/*滚动条的样式*/
+body::-webkit-scrollbar-thumb{
+	height:20px;
+  background-image: -webkit-gradient(linear,
+  left bottom,
+  left top,
+  color-stop(0.2, rgb(125, 126, 128)),
+  color-stop(0.4, rgb(97, 98, 99)),
+  color-stop(0.8, rgb(125, 126, 128)));
+}
+
 .body {
   padding: 0;
-  margin: 0;
-  width: 100%;
+  margin: 10px 100px 50px 100px;
   min-height: 60vh;
+
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: space-evenly;
+  // align-content: flex-start;
+  .left {
+    width: 80%;
+    height: auto;
+  }
+  .right {
+    height: auto;
+  }
 }
-.left {
-  width: 80%;
-  height: auto;
-}
-.right {
-  height: auto;
-}
-.left .right {
-  margin: 50px;
-}
+
 @media (max-width: 992px) {
   .left {
     width: 100%;

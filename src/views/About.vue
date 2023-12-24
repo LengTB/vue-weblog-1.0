@@ -23,7 +23,7 @@
 
 <script>
 import HomeTop from "@/components/HomeTop.vue";
-import MyImageTop from "@/components/MyImageTop.vue";
+import MyImageTop from "@/components/HomeImage.vue";
 export default {
   name: "ColdAbout",
   data() {

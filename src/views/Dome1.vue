@@ -1,9 +1,9 @@
 <template>
-  <div class="mymusic">
+  <div>
     <HomeTop></HomeTop>
     <div class="body">
       <div class="hotspots">
-        <video ref="video" controls width="500px">
+        <video ref="demo1" controls width="500px">
         </video>
       </div>
     </div>
@@ -29,7 +29,7 @@ export default {
         const data = res.data;
         const bolbData = new Blob([data], { type: "video/mp4" });
         const url = URL.createObjectURL(bolbData);
-        this.$refs.video.src = url;
+        this.$refs.demo1.src = url;
       })
       .catch(() => {
         this.$message.error("请检查网络状况");

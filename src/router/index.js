@@ -25,21 +25,36 @@ const router = new VueRouter({
             component: About
         },
         {
+            path: '/play',
+            component: Play
+        },
+        {
             path: '/login',
             component: () => import('@/views/Login.vue')
         },
         {
-            path: '/play',
-            component: Play
+            path: '/register',
+            component: () => import('@/views/Register.vue')
         },
         {
             path: '/console',
             component: () => import('@/views/Console.vue'),
             redirect: '/console/context',
-            children:[
+            children: [
                 {
                     path: 'context',
-                    component: () => import('@/views/console/Context.vue')
+                    name: 'context',
+                    component: () => import('@/views/console/Context.vue'),
+                    children: [
+                        {
+                            path: 'news',
+                            component: () => import('@/views/console/context/new.vue')
+                        },
+                        {
+                            path: 'label',
+                            component: () => import('@/views/console/context/label.vue')
+                        }
+                    ]
                 },
                 {
                     path: 'page',
@@ -53,13 +68,21 @@ const router = new VueRouter({
                     path: 'annex',
                     component: () => import('@/views/console/Annex.vue')
                 },
-
             ]
-
+        },
+        {
+            path: '/other',
+            component: () => import('@/views/other/Forgot.vue'),
+            children: [
+                {
+                    path: "forgot",
+                    component: () => import('@/views/other/Forgot.vue')
+                }
+            ]
         },
         {
             path: "*",
-            component: () => import('@/views/Stop.vue')
+            component: () => import('@/views/other/Stop.vue')
         },
     ]
 })

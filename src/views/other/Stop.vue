@@ -3,8 +3,8 @@
     <div class="joe_page_404">
       <div class="error">
         <img src="@/assets/svg/404.svg" alt="404" />
-        <h3 class="title">“未找到您要的资源”</h3>
-        <a href="/" class="error_link">返回上一页</a>
+        <h3 class="title">“未找到您要的资源，建议你联系toby问问”</h3>
+        <a class="error_link" @click="$router.back()">返回上一页</a>
       </div>
     </div>
   </div>

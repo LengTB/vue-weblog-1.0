@@ -3,22 +3,24 @@
     <div class="content">
       <div class="head">
         <div class="logo">
-          <span> Cold的窝 </span>
+          <span @click="$router.push('/')" style=" cursor: pointer;"> Cold的窝 </span>
         </div>
         <div class="right-btn">
-          <button class="link-other" @click="clickHome">Home</button>
-          <a class="into-home"> 不想登录吗？ </a>
+          <button class="link-other" @click="$router.push('/')">主页</button>
+          <a class="into-home" @click="$message.error('哎呦你干嘛呀~')"> 不想登录吗？ </a>
         </div>
       </div>
       <div class="form-content">
         <h1 class="title">登录</h1>
         <h3 class="tips">请输入账号和密码哦</h3>
         <div class="input-wrapper">
-          <input type="text" v-model="text" />
-          <input type="password" v-model="password" />
+          <div><input type="text" v-model="text" /><span>账号</span></div>
+          <div>
+            <input type="password" v-model="password" /><span>密码</span>
+          </div>
         </div>
         <div class="forgot-pwd">
-          <span>忘记密码？</span>
+          <span @click="$router.push('/other')">忘记密码？</span>
         </div>
         <button class="btn" ref="btn" @click="logo">登录</button>
         <div class="other-login">
@@ -66,8 +68,10 @@
             </div>
           </div>
         </div>
-        <div class="request">你不会还没有账号吧？<span>来一打吧</span></div>
-        <div class="Copyright">Copyright @ TobyCold</div>
+        <div class="request">
+          你不会还没有账号吧？<span @click="$router.push('/register')">来一个吧</span>
+        </div>
+        <div class="Copyright">Bloggers @ TobyCold</div>
       </div>
     </div>
   </div>
@@ -76,7 +80,7 @@
 <script>
 import axios from "axios";
 export default {
-  name:"ColdLogin",
+  name: "ColdLogin",
   components: {},
   data() {
     return {
@@ -85,9 +89,6 @@ export default {
     };
   },
   methods: {
-    clickHome() {
-      this.$router.push("/");
-    },
     logo() {
       const btn = this.$refs.btn;
       if (this.text == "" || this.password == "") {
@@ -121,7 +122,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 @font-face {
   font-family: PlastoTrial_ExtraLight;
   font-weight: 700;
@@ -145,98 +146,108 @@ export default {
   background-color: rgb(246, 242, 235);
   position: relative;
   overflow: hidden;
+  .head {
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 1% 5%;
+    display: flex;
+    box-sizing: border-box;
+    .logo {
+      width: 30%;
+      font-family: PlastoTrial_ExtraBold;
+      font-size: 50px;
+    }
+    .right-btn {
+      flex: 1;
+      .into-home {
+        float: right;
+        line-height: 50px;
+        font-family: PlastoTrial_ExtraBold;
+        font-size: 20px;
+        color: black;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .link-other {
+        float: right;
+        margin-left: 3%;
+        width: 150px;
+        height: 50px;
+        border: 0;
+        background-color: rgb(254, 200, 135);
+        border-radius: 8px;
+        font-family: PlastoTrial_ExtraBold;
+        font-size: 18px;
+        cursor: pointer;
+        transition: 0.5s;
+      }
+      .link-other:hover {
+        background-color: rgb(247, 184, 107);
+      }
+    }
+  }
+  .form-content {
+    width: 400px;
+    background-color: #fff;
+    border-radius: 30px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 50px;
+
+    .title {
+      margin: 4% 0;
+      font-family: PlastoTrial_ExtraBold;
+    }
+  }
+  .form-content::before {
+    content: "";
+    width: 465px;
+    height: 650px;
+    display: block;
+    position: absolute;
+    left: -550px;
+    bottom: 10px;
+    background-image: url(@/assets/icon/bg_2.png);
+    background-size: cover;
+  }
+  .form-content::after {
+    content: "";
+    width: 740px;
+    height: 520px;
+    display: block;
+    position: absolute;
+    right: -730px;
+    bottom: 10px;
+    background-image: url(@/assets/icon/gb.png);
+    background-size: cover;
+  }
 }
-.content .head {
-  width: 100%;
-  height: 50px;
-  position: fixed;
-  left: 0;
-  top: 0;
-  padding: 1% 5%;
-  display: flex;
-  box-sizing: border-box;
-}
-.content .head .logo {
-  width: 30%;
-  font-family: PlastoTrial_ExtraBold;
-  font-size: 50px;
-}
-.content .head .right-btn {
-  flex: 1;
-}
-.content .head .right-btn .into-home {
-  float: right;
-  line-height: 50px;
-  font-family: PlastoTrial_ExtraBold;
-  font-size: 20px;
-  color: black;
-  cursor: pointer;
-  text-decoration: none;
-}
-.content .head .right-btn .link-other {
-  float: right;
-  margin-left: 3%;
-  width: 150px;
-  height: 50px;
-  border: 0;
-  background-color: rgb(254, 200, 135);
-  border-radius: 8px;
-  font-family: PlastoTrial_ExtraBold;
-  font-size: 18px;
-  cursor: pointer;
-  transition: 0.5s;
-}
-.content .head .right-btn .link-other:hover {
-  background-color: rgb(247, 178, 95);
-}
-.content .form-content {
-  width: 400px;
-  background-color: #fff;
-  border-radius: 30px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 50px;
-}
-.content .form-content::before {
-  content: "";
-  width: 465px;
-  height: 650px;
-  display: block;
-  position: absolute;
-  left: -550px;
-  bottom: 10px;
-  background-image: url(@/assets/bg_2.png);
-  background-size: cover;
-}
-.content .form-content::after {
-  content: "";
-  width: 740px;
-  height: 520px;
-  display: block;
-  position: absolute;
-  right: -730px;
-  bottom: 10px;
-  background-image: url(@/assets/gb.png);
-  background-size: cover;
-}
-.content .form-content .title {
-  margin: 4% 0;
-  font-family: PlastoTrial_ExtraBold;
-}
-.content .form-content .tips {
+
+.form-content .content .form-content .tips {
   font-size: 16px;
   margin-bottom: 8%;
   font-family: PlastoTrial_ExtraLight;
 }
 .content .form-content .input-wrapper {
-  width: 100%;
+  width: 90%;
   margin: 2% 0;
+  position: relative;
+  span {
+    left: -55px;
+    margin: 25px 10px 10px 10px;
+    position: absolute;
+    font-size: 15px;
+    color: #a19e9e;
+  }
 }
 .content .form-content .input-wrapper input {
   width: 100%;
@@ -253,14 +264,20 @@ export default {
 .content .form-content .input-wrapper input:focus {
   border: 1px solid #000;
 }
+.content .form-content .input-wrapper input:focus + span {
+  color: #000;
+}
 .content .form-content .forgot-pwd {
   width: 100%;
   margin-bottom: 6%;
   font-family: PlastoTrial_ExtraBold;
 }
 .content .form-content .forgot-pwd span {
-  float: left;
+  float: right;
   cursor: pointer;
+}
+.content .form-content .forgot-pwd span:hover {
+  text-shadow: rgb(254, 200, 135) 1px 5px 10px;
 }
 .content .form-content .btn {
   width: 100%;
@@ -365,5 +382,5 @@ export default {
   position: absolute;
   bottom: -50px;
   font-weight: 100;
-} /*# sourceMappingURL=style.css.map */
+}
 </style>
