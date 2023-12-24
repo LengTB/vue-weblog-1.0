@@ -50,17 +50,17 @@ body {
 }
 /*滚动条里面轨道*/
 body::-webkit-scrollbar-track{
-  -webkit-box-shadow: inset 0 0 6px rgba(255, 255, 255, 0);
-  background-color: rgb(255, 255, 255);
+  -webkit-box-shadow: inset 0 0 1px rgba(255, 255, 255, 0);
+  background-color: white;
 }
 /*定义滚动条整体的样式*/
 body::-webkit-scrollbar{
-  width: 6px;
-  background-color: rgb(255, 255, 255);
+  width: 7px;
+  height: 7px;
+  background-color: white;
 }
 /*滚动条的样式*/
 body::-webkit-scrollbar-thumb{
-	height:20px;
   background-color: #fb6c28;
   border-radius: 10px;
 }

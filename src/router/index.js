@@ -6,9 +6,9 @@ Vue.use(VueRouter)
 
 //创建router对象
 
-import Home from '@/views/Home.vue'
-import About from '@/views/About.vue'
-import Play from '@/views/Dome1.vue'
+import Home from '@/views/home/Home.vue'
+import About from '@/views/home/About.vue'
+import Play from '@/views/home/Dome1.vue'
 
 const router = new VueRouter({
     routes: [
@@ -30,15 +30,15 @@ const router = new VueRouter({
         },
         {
             path: '/login',
-            component: () => import('@/views/Login.vue')
+            component: () => import('@/views/home/Login.vue')
         },
         {
             path: '/register',
-            component: () => import('@/views/Register.vue')
+            component: () => import('@/views/home/Register.vue')
         },
         {
             path: '/console',
-            component: () => import('@/views/Console.vue'),
+            component: () => import('@/views/home/Console.vue'),
             redirect: '/console/context',
             children: [
                 {
@@ -69,6 +69,10 @@ const router = new VueRouter({
                     component: () => import('@/views/console/Annex.vue')
                 },
             ]
+        },
+        {
+            path: '/context',
+            component: () => import('@/views/home/Context.vue'),
         },
         {
             path: '/other',

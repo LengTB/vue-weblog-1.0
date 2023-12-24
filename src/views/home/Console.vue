@@ -30,8 +30,8 @@
             ></path>
           </svg>
           <span style="margin-left: 5px">页面</span>
-        </div></router-link
-      >
+        </div>
+        </router-link>
       <router-link to="/console/comments" class="item">
         <div style="display: flex; align-items: center">
           <svg viewBox="0 0 24 24" width="20px" height="20px">
@@ -196,6 +196,7 @@
     </div>
     <!-- Main右 -->
     <div class="right">
+      <!-- 路由出口为控制台整个右侧内容 -->
       <router-view></router-view>
     </div>
   </div>

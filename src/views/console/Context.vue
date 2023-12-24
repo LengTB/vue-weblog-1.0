@@ -4,12 +4,12 @@
       <div class="left">logo</div>
       <div class="right">
         <router-link v-for="item in list" :key="item.name" :to="item.path">
-          <img :src="item.icon" alt="" />
+          <img alt="" width="20px" height="20px" :src="item.icon" v-show="item.icon != '' && item.icon!= null"/>
           {{ item.name }}
         </router-link>
       </div>
     </div>
-    <!-- body -->
+    <!-- 这里时right上方路由匹配出口 -->
     <router-view></router-view>
   </div>
 </template>
@@ -24,22 +24,19 @@ export default {
         {
           name: "分类",
           path: "/console/context/classify",
-          icon: require("@/assets/console/加号.svg"),
         },
         {
           name: "标签",
           path: "/console/context/label",
-          icon: require("@/assets/console/加号.svg"),
         },
         {
           name: "回收站",
           path: "/console/context/recovered",
-          icon: require("@/assets/console/加号.svg"),
         },
         {
           name: "新建",
           path: "/console/context/news",
-          icon: require("@/assets/console/加号.svg"),
+          icon: require("@/assets/console/plus-circle.svg"),
         },
       ],
     };

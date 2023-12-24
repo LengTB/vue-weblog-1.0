@@ -109,7 +109,7 @@ export default {
   font-family: 方正行黑简体;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  // height: 100%;
   margin: 20px;
   background-color: white;
   border-radius: 10px;

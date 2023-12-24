@@ -28,11 +28,18 @@ import 'codemirror/addon/scroll/simplescrollbars';
 import 'codemirror/addon/scroll/simplescrollbars.css';
 // style
 import 'codemirror/lib/codemirror.css';
+// tip插件
+import createTipPlugin from '@kangc/v-md-editor/lib/plugins/tip/index';
+import '@kangc/v-md-editor/lib/plugins/tip/tip.css';
+// 代码复制插件
+import createCopyCodePlugin from '@kangc/v-md-editor/lib/plugins/copy-code/index';
+import '@kangc/v-md-editor/lib/plugins/copy-code/copy-code.css';
 
 VMdEditor.Codemirror = Codemirror;
-
+// 编辑器
 VMdEditor.use(githubTheme, {
   Hljs: hljs,
-});
+}).use(createTipPlugin()).use(createCopyCodePlugin());
+
 
 Vue.use(VMdEditor);
