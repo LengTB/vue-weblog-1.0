@@ -43,22 +43,21 @@ const router = new VueRouter({
             children: [
                 {
                     path: 'context',
-                    name: 'context',
-                    component: () => import('@/views/console/Context.vue'),
-                    children: [
-                        {
-                            path: 'news',
-                            component: () => import('@/views/console/context/new.vue')
-                        },
-                        {
-                            path: 'label',
-                            component: () => import('@/views/console/context/label.vue')
-                        }
-                    ]
+                    component: () => import('@/views/console/Context.vue')
+                },
+                // -------------------三级路由------------------------------
+                {
+                    path: 'context/news',
+                    component: () => import('@/views/console/context/new.vue'),
                 },
                 {
+                    path: 'context/label',
+                    component: () => import('@/views/console/context/label.vue')
+                },
+                // ----------------------------------------------------------
+                {
                     path: 'page',
-                    component: () => import('@/views/console/Page.vue')
+                    component: () => import('@/views/console/Page.vue'),
                 },
                 {
                     path: 'comments',
