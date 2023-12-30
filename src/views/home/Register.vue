@@ -7,19 +7,23 @@
         </div>
         <div class="right-btn">
           <button class="link-other" @click="clickHome">主页</button>
-          <a class="into-home"> 不想登录吗？ </a>
+          <a class="into-home"> 不想注册吗？ </a>
         </div>
       </div>
       <div class="form-content">
         <h1 class="title">注册</h1>
         <h3 class="tips">请输入账号和密码哦</h3>
         <div class="input-wrapper">
-          <input type="text" v-model="text" />
-          <input type="password" v-model="password1" />
-          <input type="password" v-model="password2" />
+          <input type="text" v-model="text" /><span> 账号：</span>
+          <input :class="password" type="password" v-model="password1" /><span>
+            密码：</span
+          >
+          <input :class="password" type="password" v-model="password2" /><span>
+            确认密码：</span
+          >
         </div>
-        <button class="btn" ref="btn" @click="logo">注册</button>
-        <div class="Copyright">Copyright @ TobyCold</div>
+        <button class="btn" ref="btn" @click="goRegister">注册</button>
+        <div class="Copyright">Copyright @ Cold的窝</div>
       </div>
     </div>
   </div>
@@ -41,7 +45,45 @@ export default {
       this.$router.push("/");
     },
     goRegister() {
-      this.$router.push("/register");
+      if (this.password1 === this.password2 && this.text.length > 6) {
+        this.$axios
+          .post("/console/login/register", {
+            username: this.text,
+            password: this.password1,
+          })
+          .then((res) => {
+            console.log(res);
+          });
+      } else if (this.text.length === 0) {
+        this.$notify({
+          title: "账号不能为空",
+          message: "请重新输入",
+          position: "buttom-right",
+          type: "error",
+        });
+      }else if(this.text.length < 6){
+        this.$notify({
+          title: "账号长度最少要六位哦",
+          message: "请重新输入",
+          position: "buttom-right",
+          type: "error",
+        });
+      }else {
+        this.$notify({
+          title: "密码不一致",
+          message: "请重新输入",
+          position: "buttom-right",
+          type: "error",
+        });
+      }
+    },
+  },
+  computed: {
+    password() {
+      if (this.password2.length >= this.password1.length) {
+        return this.password1 === this.password2 ? "" : "wrong";
+      }
+      return "";
     },
   },
 };
@@ -64,7 +106,9 @@ export default {
   padding: 0;
   margin: 0;
 }
-
+.wrong {
+  color: red;
+}
 .content {
   width: 100vw;
   height: 100vh;
@@ -102,7 +146,7 @@ export default {
         width: 150px;
         height: 50px;
         border: 0;
-        background-color: tomato;
+        background-color: #fec887;
         border-radius: 8px;
         font-family: PlastoTrial_ExtraBold;
         font-size: 18px;
@@ -110,7 +154,7 @@ export default {
         transition: 0.5s;
       }
       .link-other:hover {
-        background-color: rgb(173, 67, 48);
+        background-color: #f7b05a;
       }
     }
   }
@@ -165,7 +209,10 @@ export default {
 .content .form-content .input-wrapper {
   width: 100%;
   margin: 2% 0;
+  font-size: 14px;
+  color: #ccc;
 }
+
 .content .form-content .input-wrapper input {
   width: 100%;
   height: 50px;
@@ -178,11 +225,15 @@ export default {
   font-size: 20px;
   transition: 0.2s;
 }
+.content .form-content .input-wrapper input:focus + span {
+  color: #000;
+}
 .content .form-content .input-wrapper input:focus {
   border: 1px solid #000;
 }
 
 .content .form-content .btn {
+  margin-top: 40px;
   width: 100%;
   height: 40px;
   background-color: rgb(254, 200, 135);
@@ -199,7 +250,7 @@ export default {
 
 .content .form-content .Copyright {
   position: absolute;
-  bottom: -50px;
-  font-weight: 100;
-} /*# sourceMappingURL=style.css.map */
+  bottom: -100px;
+  color: #9b9b9b;
+}
 </style>

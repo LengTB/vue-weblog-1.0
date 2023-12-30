@@ -32,9 +32,7 @@
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="submitForm">发布</el-button>
-            <el-button @click="publish = !publish"
-              >关闭</el-button
-            >
+            <el-button @click="publish = !publish">关闭</el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -61,7 +59,7 @@ export default {
         },
       ],
       text: "# Cold的窝开发中……",
-      publish: "true",
+      publish: false,
       form: {
         title: "",
         summary: "",
@@ -91,6 +89,21 @@ export default {
       this.$refs.form.validate((valid) => {
         if (valid) {
           // 在这里添加发布文章的逻辑，例如发送请求到服务器进行保存等操作。
+          this.$axios
+            .post("/api/console/save", {
+              title: this.form.title,
+              summary: this.form.summary,
+              tags: this.form.tags,
+              routeName: this.form.routeName,
+              publishTime: this.form.publishTime,
+              body: this.text,
+            })
+            .then((res) => {
+              if (res.data.code === 1) {
+                this.$message.success("发布成功");
+                this.publish = false;
+              }
+            });
           console.log(this.form);
         } else {
           console.log("Validation Failed!");
@@ -101,6 +114,28 @@ export default {
   },
   components: {
     ContextTop,
+  },
+  created(){
+   //验证登录
+    this.$axios
+      .get("/api/console/verify", {
+        headers: {
+          token: this.$store.state.token,
+        },
+      })
+      .then((ref) => {
+        if (ref.data.code == 1) {
+          this.$store.commit("setLogin", false);
+        }
+      })
+      .catch(() => {
+        //未登录
+        this.$notify.info({
+          title: "未登录",
+          message: "点击右上角登录",
+        });
+        this.$router.push('/login')
+      });
   },
 };
 </script>

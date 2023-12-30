@@ -216,6 +216,25 @@ export default {
       this.$router.push("/");
     },
   },
+    created(){
+   //验证登录
+    this.$axios
+      .get("/api/console/verify", {
+        headers: {
+          token: this.$store.state.token,
+        },
+      })
+      .then((ref) => {
+        if (ref.data.code == 1) {
+          this.$store.commit("setLogin", false);
+        }
+      })
+      .catch(() => {
+        //未登录
+        this.$message.error("登录已过期，请重新登录");
+        this.$router.push('/login')
+      });
+  },
 };
 </script>
 

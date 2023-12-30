@@ -95,7 +95,7 @@ export default {
         alert("请输入账号和密码");
       } else {
         axios
-          .post("/api/console/login", {
+          .post("/console/login", {
             account: this.text,
             password: this.password,
           })
