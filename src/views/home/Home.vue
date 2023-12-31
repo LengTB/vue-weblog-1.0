@@ -4,11 +4,11 @@
     <HomeImage></HomeImage>
     <div class="body">
       <div class="left">
-        <HomeContext
+        <HomeSummary
           ref="contest"
-          :bodys="bodys"
+          :summarys="summarys"
           @handleCurrentChange="getIndex"
-        ></HomeContext>
+        ></HomeSummary>
       </div>
       <div class="right">
         <HomeCard :card="card" ref="Card"></HomeCard>
@@ -34,14 +34,14 @@
 import HomeTop from "@/components/HomeTop.vue";
 import HomeImage from "@/components/HomeImage.vue";
 import HomeFooter from "@/components/HomeFooter.vue";
-import HomeContext from "@/components/HomeContext.vue";
+import HomeSummary from "@/components/HomeSummary.vue";
 import HomeCard from "@/components/HomeCard.vue";
 export default {
   name: "ColdHome",
   data() {
     return {
       index: 0,
-      context: {},
+      summarys: {},
       bodys: "",
       card:{}
     };
@@ -50,7 +50,7 @@ export default {
     HomeTop,
     HomeImage,
     HomeFooter,
-    HomeContext,
+    HomeSummary,
     HomeCard,
   },
   //创建时

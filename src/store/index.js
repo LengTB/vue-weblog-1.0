@@ -17,6 +17,7 @@ const store = new Vuex.Store({
         //设置token
         setToken(state,token){
             state.token = token;
+            state.login = false;
             setInfo(token);
         },
         setLogin(state,login){

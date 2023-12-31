@@ -5,7 +5,7 @@
         最新文章
       </h3>
     </div>
-    <div class="item" v-for="(item, index) in bodys" :key="index">
+    <div class="item" v-for="(item, index) in summarys" :key="index">
       <a :href="item.link">{{ item.title }}</a>
       <p class="text">摘要：{{ item.body }}</p>
       <p>
@@ -74,7 +74,7 @@
 
 <script>
 export default {
-  props: ["bodys"],
+  props: ["summarys"],
   data() {
     return {
       //分页相关设置

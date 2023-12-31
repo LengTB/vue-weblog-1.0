@@ -3,11 +3,15 @@
     <div class="content">
       <div class="head">
         <div class="logo">
-          <span @click="$router.push('/')" style=" cursor: pointer;"> Cold的窝 </span>
+          <span @click="$router.push('/')" style="cursor: pointer">
+            Cold的窝
+          </span>
         </div>
         <div class="right-btn">
           <button class="link-other" @click="$router.push('/')">主页</button>
-          <a class="into-home" @click="$message.error('哎呦你干嘛呀~')"> 不想登录吗？ </a>
+          <a class="into-home" @click="$message.error('哎呦你干嘛呀~')">
+            不想登录吗？
+          </a>
         </div>
       </div>
       <div class="form-content">
@@ -22,7 +26,7 @@
         <div class="forgot-pwd">
           <span @click="$router.push('/other')">忘记密码？</span>
         </div>
-        <button class="btn" ref="btn" @click="logo">登录</button>
+        <button class="btn" @click="logo">登录</button>
         <div class="other-login">
           <div class="divider">
             <span class="line"></span>
@@ -69,7 +73,9 @@
           </div>
         </div>
         <div class="request">
-          你不会还没有账号吧？<span @click="$router.push('/register')">来一个吧</span>
+          你不会还没有账号吧？<span @click="$router.push('/register')"
+            >来一个吧</span
+          >
         </div>
         <div class="Copyright">Bloggers @ TobyCold</div>
       </div>
@@ -78,7 +84,6 @@
 </template>
 
 <script>
-import axios from "axios";
 export default {
   name: "ColdLogin",
   components: {},
@@ -90,11 +95,10 @@ export default {
   },
   methods: {
     logo() {
-      const btn = this.$refs.btn;
       if (this.text == "" || this.password == "") {
         alert("请输入账号和密码");
       } else {
-        axios
+        this.$axios
           .post("/console/login", {
             account: this.text,
             password: this.password,
@@ -105,17 +109,15 @@ export default {
               this.$store.commit("setToken", ref.data.data);
               this.$router.push("/");
             } else {
-              this.$router.go(0);
               this.$message.error(ref.data.msg);
             }
           })
-          .catch((err) => {
-            this.$router.go(0);
-            console.log(err);
+          .catch(() => {
+            this.$message.error("登录失败");
+            setTimeout(() => {
+              this.$router.go(0);
+            }, 1000);
           });
-
-        btn.style.backgroundColor = "rgb(173, 67, 48)";
-        btn.style.color = "white";
       }
     },
   },
