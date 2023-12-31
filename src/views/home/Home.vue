@@ -11,7 +11,7 @@
         ></HomeContext>
       </div>
       <div class="right">
-        <HomeCard :context="context" ref="Card"></HomeCard>
+        <HomeCard :card="card" ref="Card"></HomeCard>
       </div>
     </div>
     <el-backtop>
@@ -43,6 +43,7 @@ export default {
       index: 0,
       context: {},
       bodys: "",
+      card:{}
     };
   },
   components: {
@@ -54,39 +55,12 @@ export default {
   },
   //创建时
   created() {
-    //数据加载
-
-    this.$axios
-      .get(this.$store.state.domain + "/data")
-      .then((ref) => {
-        if (ref.data.code == 1) {
-          this.context = ref.data.data;
-          this.bodys = ref.data.data.bodys;
-        }
+      //请求card数据
+      this.$axios.get("/user/card",)
+      .then(res => {
+        this.card = res.data.data;
+        console.log(this.card);
       })
-      .catch((err) => {
-        console.log(err);
-      });
-    //验证登录
-    // this.$axios
-    //   .get("/api/console/verify", {
-    //     headers: {
-    //       token: this.$store.state.token,
-    //     },
-    //   })
-    //   .then((ref) => {
-    //     if (ref.data.code == 1) {
-    //       this.$store.commit("setLogin", false);
-    //     }
-    //   })
-    //   .catch(() => {
-    //     //未登录
-    //     this.$notify.info({
-    //       title: "未登录",
-    //       message: "点击右上角登录",
-    //       position: "bottom-right",
-    //     });
-    //   });
   },
   //挂载完成
   mounted() {},

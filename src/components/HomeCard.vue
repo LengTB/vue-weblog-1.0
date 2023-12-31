@@ -2,27 +2,27 @@
   <div>
     <div class="card">
       <div class="logo">
-        <img :src="logoUrl" alt="" />
+        <img :src="card.avatar" alt="" />
         <div class="transition"></div>
       </div>
       <div class="name">
-        <span>{{ context.name }}</span>
+        <span @click="$message.info('关于我的秘密，你想知道，我就不告诉你！')">{{ card.name }}</span>
         <img :src="grade" alt="" />
       </div>
       <div class="admin" v-show="admin"></div>
-      <div class="logion">{{ context.signature }}</div>
+      <div class="logion" @click="$message.info('咋，你觉得很下头吗！')">{{ card.signature }}</div>
       <div class="message">
-        <div class="item">
-          <div @click="$message.info('功能尚未开发完成，敬请期待！')">999+</div>
+        <div class="item" @click="$message.info('功能尚未开发完成，敬请期待！')">
+          <div>{{card.commentCount}}</div>
           <div>评论数</div>
         </div>
-        <div class="item">
-          <div @click="$message.info('功能尚未开发完成，敬请期待！')">999+</div>
-          <div>标签数</div>
-        </div>
-        <div class="item">
-          <div @click="$message.info('功能尚未开发完成，敬请期待！')">999+</div>
+        <div class="item" @click="$message.info('功能尚未开发完成，敬请期待！')">
+          <div>{{card.tagCount}}</div>
           <div>文章数</div>
+        </div>
+        <div class="item" @click="$message.info('功能尚未开发完成，敬请期待！')">
+          <div>{{card.likeCount}}</div>
+          <div>点赞数</div>
         </div>
       </div>
       <div class="about">
@@ -31,6 +31,7 @@
             role="img"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
+            @click="clickInfo('github')"
           >
             <title>GitHub</title>
             <path
@@ -43,7 +44,7 @@
             role="img"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
-            @click="$router.push('https://tenapi.cn/v2/qq?qq=1187520285')"
+            @click="clickInfo('qq')"
           >
             <title>Tencent QQ</title>
             <path
@@ -56,7 +57,7 @@
             role="img"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
-            @click="$router.push('https://space.bilibili.com/2065153621')"
+            @click="clickInfo('bilibili')"
           >
             <title>Bilibili</title>
             <path
@@ -76,11 +77,10 @@ export default {
    * name           名称
    * signature      个性签名
    */
-  props: ["context"],
+  props: ["card"],
   data() {
     return {
       //这是获取qq头像的api
-      logoUrl: "https://tenapi.cn/v2/qqimg?qq=",
       grades: [
         require("@/assets/grade/0.avif"),
         require("@/assets/grade/1.avif"),
@@ -95,7 +95,22 @@ export default {
       ],
     };
   },
-  created() {},
+  methods:{
+    clickInfo(name) {
+    if(name === 'qq'){
+      location.href  =  this.card.qq;
+    }else if(name === 'github'){
+      location.href  =  this.card.github;
+    }else if(name === 'bilibili'){
+      location.href  =  this.card.bilibili;
+    }else{
+      this.$notify.error({
+        title: '错误',
+        message: '未知的链接',
+      });
+    }
+    },
+  },
   mounted() {
     //这里从仓库拿qq来渲染头像
     this.logoUrl = this.logoUrl + this.$store.state.qq;
@@ -104,13 +119,10 @@ export default {
   //计算属性，动态渲染
   computed: {
     admin() {
-      return this.context.admin;
+      return this.card.admin;
     },
     grade() {
-      return this.grades[this.context.grade];
-    },
-    logoCss() {
-      return {};
+      return this.grades[this.card.grade];
     },
   },
 };

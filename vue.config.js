@@ -5,7 +5,7 @@ module.exports = defineConfig({
   //代理
   devServer:{
     proxy: {
-      '/api': {
+      '/user': {
         target: 'http://192.168.31.231:8888',
         changeOrigin: true,
 
