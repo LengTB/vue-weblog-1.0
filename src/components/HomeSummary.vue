@@ -5,8 +5,14 @@
         最新文章
       </h3>
     </div>
-    <div class="item" v-for="(item, index) in summarys" :key="index">
-      <a :href="item.link">{{ item.title }}</a>
+    <div
+      class="item"
+      v-for="(item, index) in summarys.summaryEntities"
+      :key="index"
+    >
+      <a @click="$router.push('/article/' + item.routerName)">{{
+        item.title
+      }}</a>
       <p class="text">摘要：{{ item.body }}</p>
       <p>
         <span class="time">
@@ -25,7 +31,7 @@
               d="M12,6a1,1,0,0,0-1,1v4.325L7.629,13.437a1,1,0,0,0,1.062,1.7l3.84-2.4A1,1,0,0,0,13,11.879V7A1,1,0,0,0,12,6Z"
             />
           </svg>
-          发表于：{{ item.date }}
+          我有点懒，不想给数据换表
           <svg
             style="position: relative; top: 2px; margin-left: 10px"
             xmlns="http://www.w3.org/2000/svg"
@@ -42,7 +48,7 @@
               />
             </g>
           </svg>
-          {{ item.looking }}
+          这个数据在另一张表
           <svg
             style="position: relative; top: 2px; margin-left: 10px"
             xmlns="http://www.w3.org/2000/svg"
@@ -55,18 +61,18 @@
               d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z"
             />
           </svg>
-          {{ item.love }}
+          你点进去将就将就吧，别讲究！
         </span>
       </p>
     </div>
     <el-pagination
       class="total"
-      :hide-on-single-page="show"
+      :hide-on-single-page="true"
       @current-change="handleCurrentChange"
       layout="prev, pager, next"
       prev-text="上一页"
       next-text="下一页"
-      :total="bodys.length"
+      :total="summarys.total"
     >
     </el-pagination>
   </div>
@@ -76,19 +82,10 @@
 export default {
   props: ["summarys"],
   data() {
-    return {
-      //分页相关设置
-      show: true,
-    };
+    return {};
   },
-  mounted() {
-    // console.log(this.bodys);
-  },
-  computed: {
-    // text() {
-    //   return this.bodys;
-    // },
-  },
+  mounted() {},
+  computed: {},
   methods: {
     handleCurrentChange(e) {
       this.$emit("handleCurrentChange", e);
@@ -109,7 +106,6 @@ export default {
   font-family: 方正行黑简体;
   display: flex;
   flex-direction: column;
-  // height: 100%;
   margin: 20px;
   background-color: white;
   border-radius: 10px;
@@ -127,6 +123,7 @@ export default {
     word-wrap: break-word;
     max-height: 200px;
     a {
+      cursor: pointer;
       font-size: 20px;
       margin-left: 15px;
       margin-right: 20px;

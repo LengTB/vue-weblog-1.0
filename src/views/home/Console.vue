@@ -286,7 +286,7 @@ export default {
 }
 .main > .right {
   margin-left: 250px;
-  background-color: aqua;
+  background-color: white;
 }
 .router-link-active {
   text-decoration: none;

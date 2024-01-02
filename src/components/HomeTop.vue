@@ -1,6 +1,11 @@
 <template>
   <div class="top">
-    <img src="@/assets/icon/彩色裸底（logo放大版）.png" alt="logo" class="logo" />
+    <img
+      src="@/assets/icon/彩色裸底（logo放大版）.png"
+      alt="logo"
+      class="logo"
+      @click="$router.push('/')"
+    />
     <div class="nav">
       <router-link
         class="item"
@@ -44,7 +49,7 @@ export default {
         },
         {
           name: "demo1",
-          href: "/play",
+          href: "/article/cold",
         },
         {
           name: "关于我",
@@ -61,7 +66,12 @@ export default {
       this.$emit("change", index);
     },
   },
-  created() {},
+  created() {
+    if (this.$store.state.token != null) {
+      console.log("已登录");
+      this.$store.commit("setLogin", false);
+    }
+  },
   mounted() {},
 };
 </script>
@@ -80,6 +90,7 @@ export default {
     height: 50px;
     margin: 0px 20px;
     animation: top 1s ease-in;
+    z-index: 99;
   }
   .nav {
     .item {
@@ -116,7 +127,7 @@ export default {
     .active {
       color: #fb6c28 !important;
       text-shadow: 1px 1px 2px #feb18e, 0 0 1em #f49b72, 0 0 1.2em #f9986a;
-      border-bottom: 3px solid #fb6c28;
+      border-bottom: 7px solid #fb6c28;
     }
   }
 }

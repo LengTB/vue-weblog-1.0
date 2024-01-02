@@ -8,13 +8,12 @@ module.exports = defineConfig({
       '/user': {
         target: 'http://192.168.31.231:8888',
         changeOrigin: true,
-
       },
       '/console':{
         target: 'http://192.168.31.231:8888',
         changeOrigin: true,
       }
     }
-    // proxy: '192.168.31.231:8888'
+    // proxy: 'http://192.168.31.231:8888'
   }
 })

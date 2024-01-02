@@ -43,7 +43,7 @@ export default {
       index: 0,
       summarys: {},
       bodys: "",
-      card:{}
+      card: {},
     };
   },
   components: {
@@ -55,12 +55,24 @@ export default {
   },
   //创建时
   created() {
-      //请求card数据
-      this.$axios.get("/user/card",)
-      .then(res => {
+    //请求card数据
+    this.$axios
+      .get("/user/card")
+      .then((res) => {
         this.card = res.data.data;
-        console.log(this.card);
       })
+      .catch(() => {
+        this.$message.error("后台数据获取失败，请检查后端服务器运行是否正常！");
+      });
+
+    this.$axios
+      .get("/user/summary/0")
+      .then((res) => {
+        this.summarys = res.data.data;
+      })
+      .catch(() => {
+        this.$message.error("后台数据获取失败，请检查后端服务器运行是否正常！");
+      });
   },
   //挂载完成
   mounted() {},
@@ -71,7 +83,14 @@ export default {
     },
 
     getIndex(index) {
-      console.log(index);
+      this.$axios
+      .get("/user/summary/"+ (index - 1))
+      .then((res) => {
+        this.summarys = res.data.data;
+      })
+      .catch(() => {
+        this.$message.error("后台数据获取失败，请检查后端服务器运行是否正常！");
+      });
     },
   },
   computed: {},

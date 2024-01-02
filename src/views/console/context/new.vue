@@ -21,7 +21,7 @@
             <el-input v-model="form.tags"></el-input>
           </el-form-item>
           <el-form-item label="文章路由名称">
-            <el-input v-model="form.routeName"></el-input>
+            <el-input v-model="form.routerName"></el-input>
           </el-form-item>
           <el-form-item label="文章发布时间">
             <el-date-picker
@@ -64,7 +64,7 @@ export default {
         title: "",
         summary: "",
         tags: "",
-        routeName: "",
+        routerName: "",
         publishTime: "",
       },
     };
@@ -89,22 +89,38 @@ export default {
       this.$refs.form.validate((valid) => {
         if (valid) {
           // 在这里添加发布文章的逻辑，例如发送请求到服务器进行保存等操作。
+
+          /**
+           * 这里老是不能被代理，可能是因为属于element-ui组件内
+           */
           this.$axios
-            .post("/api/console/save", {
-              title: this.form.title,
-              summary: this.form.summary,
-              tags: this.form.tags,
-              routeName: this.form.routeName,
-              publishTime: this.form.publishTime,
-              body: this.text,
-            })
+            .post(
+              "/console/article",
+              {
+                title: this.form.title,
+                summary: this.form.summary,
+                tags: this.form.tags,
+                routerName: this.form.routerName,
+                publishTime: this.form.publishTime,
+                body: this.text,
+              },
+              {
+                headers: {
+                  token: this.$store.state.token,
+                },
+              }
+            )
             .then((res) => {
               if (res.data.code === 1) {
                 this.$message.success("发布成功");
                 this.publish = false;
+              }else{
+                this.$message.error(res.data.message)
               }
+            })
+            .catch((res) => {
+              this.$message.error(res.data.message);
             });
-          console.log(this.form);
         } else {
           console.log("Validation Failed!");
           return false;
@@ -115,10 +131,10 @@ export default {
   components: {
     ContextTop,
   },
-  created(){
-   //验证登录
+  created() {
+    //验证登录
     this.$axios
-      .get("/api/console/verify", {
+      .get("/console/verify", {
         headers: {
           token: this.$store.state.token,
         },
@@ -134,7 +150,7 @@ export default {
           title: "未登录",
           message: "点击右上角登录",
         });
-        this.$router.push('/login')
+        this.$router.push("/login");
       });
   },
 };
