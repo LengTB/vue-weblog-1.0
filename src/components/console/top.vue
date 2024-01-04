@@ -41,6 +41,7 @@ export default {
 <style lang="less" scoped>
 .main {
   .top {
+    min-width: 400px;
     display: flex;
     justify-content: space-between;
     align-items: center;

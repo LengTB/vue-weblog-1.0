@@ -8,8 +8,7 @@ Vue.use(VueRouter)
 
 import Home from '@/views/home/Home.vue'
 import About from '@/views/home/About.vue'
-import Play from '@/views/home/Dome1.vue'
-import Article from '@/views/home/Article.vue'
+import Newyear from '@/views/home/Newyear.vue'
 
 const router = new VueRouter({
     routes: [
@@ -26,13 +25,12 @@ const router = new VueRouter({
             component: About
         },
         {
-            path: '/play',
-            component: Play
+            path: "/newyear",
+            component: Newyear
         },
         {
-            path:"/article/:id",
-            component: Article
-            // component: () => import('@/views/home/Article.vue'),
+            path: '/article/:id',
+            component: () => import('@/views/home/Article.vue'),
         },
         {
             path: '/login',

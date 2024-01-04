@@ -9,8 +9,6 @@ const store = new Vuex.Store({
     state: {
         //细节，这里必须要带括号，我试了getInfo 会拿不到参数
         token: getInfo(),
-        qq: '1187520285',
-        domain:"/api",
         login:true
     },
     mutations:{

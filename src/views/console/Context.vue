@@ -1,11 +1,27 @@
 <template>
-  <div class="main">
+  <div class="centext">
     <ContextTop :list="list"></ContextTop>
     <div class="body">
-      <el-empty description="暂无数据" v-show="false"></el-empty>
-      <el-table :data="summarys.summaryEntities" style="width: 100%">
-        <el-table-column label="文章" prop="title"> </el-table-column>
-        <el-table-column label="时间" prop="routerName"> </el-table-column>
+      <el-empty
+        description="暂无数据"
+        v-show="show"
+        :image-size="250"
+        class="empty"
+      ></el-empty>
+      <el-table
+        :data="summarys.summaryEntities"
+        style=""
+        class="table"
+        stripe
+        max-height="700px"
+        v-show="!show"
+        current-row-key="id"
+      >
+        <el-table-column label="标题" prop="title"> </el-table-column>
+        <el-table-column label="路由" prop="routerName"> </el-table-column>
+        <el-table-column label="摘要" prop="summary"> </el-table-column>
+        <el-table-column label="时间" prop="createTime"></el-table-column>
+        <el-table-column label="状态" prop="status"></el-table-column>
         <el-table-column align="right">
           <template slot-scope="scope">
             <el-button
@@ -28,6 +44,7 @@
         :total="summarys.total"
         class="total"
         @current-change="handleCurrentChange"
+        v-show="!show"
       >
       </el-pagination>
     </div>
@@ -63,6 +80,8 @@ export default {
       ],
       summarys: {},
       search: "",
+      show: false,
+      statu: ["未发布", "已发布", "已隐藏"],
     };
   },
   methods: {
@@ -72,20 +91,30 @@ export default {
     handleDelete(index, row) {
       console.log(index, row);
     },
-    handleCurrentChange(index){
+    handleCurrentChange(index) {
       this.$axios
-      .get("/user/summary/" + (index - 1))
-      .then((res) => {
-        this.summarys = res.data.data;
-      })
-      .catch(() => {
-        this.$message.error("后台数据获取失败，请检查后端服务器运行是否正常！");
-      });
-    }
+        .get("/console/summary/" + (index - 1), {
+          headers: {
+            token: this.$store.state.token,
+          },
+        })
+        .then((res) => {
+          this.summarys = res.data.data;
+        })
+        .catch(() => {
+          this.$message.error(
+            "后台数据获取失败，请检查后端服务器运行是否正常！"
+          );
+        });
+    },
   },
   created() {
     this.$axios
-      .get("/user/summary/0")
+      .get("/console/summary/0", {
+        headers: {
+          token: this.$store.state.token,
+        },
+      })
       .then((res) => {
         this.summarys = res.data.data;
       })
@@ -101,7 +130,11 @@ export default {
 
 <style lang="less" scoped>
 .body {
-  width: 100%;
+  margin: 15px;
+  .empty {
+    width: 100%;
+    height: 100vh;
+  }
   .total {
     margin-top: 30px;
     text-align: center;

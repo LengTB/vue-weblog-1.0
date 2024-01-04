@@ -1,11 +1,12 @@
 <template>
-  <div class="main">
+  <div class="console">
     <div class="left">
-      <img
-        src="@/assets/icon/彩色裸底（logo放大版）.png"
-        alt="logo"
-        @click="goHome"
-      />
+      <a href="/" class="logo"></a>
+      <!-- <img -->
+      <!-- src="@/assets/icon/彩色裸底（logo放大版）.png" -->
+      <!-- alt="logo" -->
+      <!-- @click="goHome" -->
+      <!-- /> -->
       <router-link to="/" class="item">仪表盘</router-link>
       <div style="margin: 5px 0 5px -180px; font-size: 14px; color: #847e7e">
         <span>用户</span>
@@ -31,7 +32,7 @@
           </svg>
           <span style="margin-left: 5px">页面</span>
         </div>
-        </router-link>
+      </router-link>
       <router-link to="/console/comments" class="item">
         <div style="display: flex; align-items: center">
           <svg viewBox="0 0 24 24" width="20px" height="20px">
@@ -141,7 +142,7 @@
       >
       <div class="about">
         <div class="about-item">
-          <div>{{ name }}</div>
+          <div>{{ card.name }}</div>
           <div
             style="
               display: flex;
@@ -160,15 +161,15 @@
                 d="M12 14v2a6 6 0 0 0-6 6H4a8 8 0 0 1 8-8zm0-1c-3.315 0-6-2.685-6-6s2.685-6 6-6s6 2.685 6 6s-2.685 6-6 6zm0-2c2.21 0 4-1.79 4-4s-1.79-4-4-4s-4 1.79-4 4s1.79 4 4 4zm2.595 7.812a3.51 3.51 0 0 1 0-1.623l-.992-.573l1-1.732l.992.573A3.496 3.496 0 0 1 17 14.645V13.5h2v1.145c.532.158 1.012.44 1.405.812l.992-.573l1 1.732l-.992.573a3.51 3.51 0 0 1 0 1.622l.992.573l-1 1.732l-.992-.573a3.496 3.496 0 0 1-1.405.812V22.5h-2v-1.145a3.496 3.496 0 0 1-1.405-.812l-.992.573l-1-1.732l.992-.572zM18 19.5a1.5 1.5 0 1 0 0-3a1.5 1.5 0 0 0 0 3z"
               ></path>
             </svg>
-            {{ icon }}
+            {{ card.isAdmin ? "管理员" : "普通用户" }}
           </div>
         </div>
         <div class="about-item">
           <span title="个人中心">
             <svg
               viewBox="0 0 24 24"
-              width="1.2em"
-              height="1.2em"
+              width="1.5em"
+              height="1.5em"
               class="h-5 w-5 text-gray-600 group-hover:text-gray-900"
             >
               <path
@@ -180,8 +181,8 @@
           <span title="退出登录">
             <svg
               viewBox="0 0 24 24"
-              width="1.2em"
-              height="1.2em"
+              width="1.5em"
+              height="1.5em"
               offset="100"
               class="h-5 w-5 text-gray-600 group-hover:text-gray-900"
             >
@@ -207,54 +208,47 @@ export default {
   name: "ColdConsole",
   data() {
     return {
-      name: "Administrator",
-      icon: "管理员",
+      card: {},
     };
   },
   methods: {
-    goHome() {
-      this.$router.push("/");
-    },
   },
-    created(){
-   //验证登录
+  created() {
+    //验证登录
     this.$axios
-      .get("/api/console/verify", {
-        headers: {
-          token: this.$store.state.token,
-        },
-      })
-      .then((ref) => {
-        if (ref.data.code == 1) {
-          this.$store.commit("setLogin", false);
-        }
+      .get("/user/card")
+      .then((res) => {
+        this.card = res.data.data;
       })
       .catch(() => {
-        //未登录
-        this.$message.error("登录已过期，请重新登录");
-        this.$router.push('/login')
+        this.$message.error("后台数据获取失败，请检查后端服务器运行是否正常！");
       });
   },
 };
 </script>
 
 <style lang="less" scoped>
-.main {
-  min-width: 600px;
+.console {
+  position: fixed;
+  width: 100%;
+  height: 100%;
 }
-.main > .left {
+.console > .left {
+  .logo {
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    border-radius: 10px;
+    background-image: url('@/assets/icon/彩色裸底（logo放大版）.png');
+    background-size: cover;
+  }
   background-color: white;
   float: left;
   width: 250px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
-  img {
-    width: 100px;
-    margin: 5px;
-    border-radius: 10px;
-  }
   .item {
     width: 200px;
     height: 45px;
@@ -265,15 +259,18 @@ export default {
     justify-content: center;
   }
   .about {
+    width: 100%;
     height: 55px;
-    border-radius: 5px;
-    margin: 100px 5px 5px 5px;
+    margin-top: 100px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     .about-item {
-      margin: 10px;
+      text-align: center;
+      div{
+        padding: 3px;
+      }
       span {
         color: #847e7e;
         margin: 10px;
@@ -284,9 +281,9 @@ export default {
     }
   }
 }
-.main > .right {
+.console > .right {
   margin-left: 250px;
-  background-color: white;
+  background-color: #eff4f9;
 }
 .router-link-active {
   text-decoration: none;

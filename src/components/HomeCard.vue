@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="card">
+    <div class="card" v-show="card.name != null">
       <div class="logo">
         <img :src="card.avatar" alt="" />
         <div class="transition"></div>
@@ -114,6 +114,7 @@ export default {
   mounted() {
     //这里从仓库拿qq来渲染头像
     this.logoUrl = this.logoUrl + this.$store.state.qq;
+    console.log(this.card);
   },
 
   //计算属性，动态渲染
@@ -125,6 +126,10 @@ export default {
       return this.grades[this.card.grade];
     },
   },
+
+  created(){
+    
+  }
 };
 </script>
 <style lang="less" scoped>

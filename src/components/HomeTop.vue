@@ -44,12 +44,12 @@ export default {
           href: "/home",
         },
         {
-          name: "控制台",
-          href: "/console",
+          name: "newyear",
+          href: "/newyear",
         },
         {
-          name: "demo1",
-          href: "/article/cold",
+          name: "管理",
+          href: "/console",
         },
         {
           name: "关于我",
@@ -68,7 +68,6 @@ export default {
   },
   created() {
     if (this.$store.state.token != null) {
-      console.log("已登录");
       this.$store.commit("setLogin", false);
     }
   },
@@ -78,16 +77,17 @@ export default {
 
 <style lang="less" scoped>
 .top {
-  height: 50px;
+  --height: 55px;
+  height: var(--height);
   background-color: rgb(255, 255, 255);
   transition: height 2s ease;
   animation: top 1s ease;
-  width: 100%;
+  min-width: 470px;
   position: relative;
   .logo {
     position: absolute;
-    width: 50px;
-    height: 50px;
+    width: var(--height);
+    height: var(--height);
     margin: 0px 20px;
     animation: top 1s ease-in;
     z-index: 99;
@@ -95,8 +95,8 @@ export default {
   .nav {
     .item {
       font-family: YeZiGongChangAoYeHei;
-      height: 50px;
-      line-height: 50px;
+      height: var(--height);
+      line-height: var(--height);
       padding: 0px 10px;
       color: black;
       text-decoration: none;
@@ -122,12 +122,12 @@ export default {
       border-color: tomato;
     }
     > * {
-      margin: 10px 10px;
+      margin: 0px 15px;
     }
     .active {
       color: #fb6c28 !important;
       text-shadow: 1px 1px 2px #feb18e, 0 0 1em #f49b72, 0 0 1.2em #f9986a;
-      border-bottom: 7px solid #fb6c28;
+      border-bottom: 6px solid #fb6c28;
     }
   }
 }
@@ -137,7 +137,7 @@ export default {
     height: 0px;
   }
   to {
-    height: 50px;
+    height: var(--height);
   }
 }
 </style>

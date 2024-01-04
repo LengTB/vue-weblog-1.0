@@ -23,13 +23,6 @@
           <el-form-item label="文章路由名称">
             <el-input v-model="form.routerName"></el-input>
           </el-form-item>
-          <el-form-item label="文章发布时间">
-            <el-date-picker
-              v-model="form.publishTime"
-              type="datetime"
-              placeholder="选择发布时间"
-            ></el-date-picker>
-          </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="submitForm">发布</el-button>
             <el-button @click="publish = !publish">关闭</el-button>
@@ -65,7 +58,6 @@ export default {
         summary: "",
         tags: "",
         routerName: "",
-        publishTime: "",
       },
     };
   },
@@ -134,7 +126,7 @@ export default {
   created() {
     //验证登录
     this.$axios
-      .get("/console/verify", {
+      .get("/console/login", {
         headers: {
           token: this.$store.state.token,
         },
@@ -142,6 +134,12 @@ export default {
       .then((ref) => {
         if (ref.data.code == 1) {
           this.$store.commit("setLogin", false);
+        }else{
+          this.$notify.info({
+          title: "未登录",
+          message: "点击右上角登录",
+        });
+        this.$router.push("/login");
         }
       })
       .catch(() => {
