@@ -18,22 +18,22 @@
         <h1 class="title">登录</h1>
         <h3 class="tips">请输入账号和密码哦</h3>
         <div class="input-wrapper">
-          <div><input type="text" v-model="text" /><span>账号</span></div>
+          <div><input type="text" v-model="text" /><span>账号：</span></div>
           <div>
-            <input type="password" v-model="password" /><span>密码</span>
+            <input type="password" v-model="password" /><span>密码：</span>
           </div>
         </div>
         <div class="forgot-pwd">
           <span @click="$router.push('/other')">忘记密码？</span>
         </div>
-        <button class="btn" @click="logo">登录</button>
+        <button class="btn" @click="login">登录</button>
         <div class="other-login">
           <div class="divider">
             <span class="line"></span>
             <span class="divider-text">其他登录方式</span>
             <span class="line"></span>
           </div>
-          <div class="other-login-wrapper">
+          <div class="other-login-wrapper" @click="forqq">
             <div class="other-login-item">
               <svg
                 t="1695533328061"
@@ -94,7 +94,7 @@ export default {
     };
   },
   methods: {
-    logo() {
+    login() {
       if (this.text == "" || this.password == "") {
         alert("请输入账号和密码");
       } else {
@@ -119,6 +119,9 @@ export default {
             }, 1000);
           });
       }
+    },
+    forqq(){
+      
     },
   },
 };
@@ -194,7 +197,7 @@ export default {
   .form-content {
     width: 400px;
     background-color: #fff;
-    border-radius: 30px;
+    border-radius: 10px;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -204,7 +207,7 @@ export default {
     justify-content: center;
     flex-direction: column;
     padding: 50px;
-
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.562);
     .title {
       margin: 4% 0;
       font-family: PlastoTrial_ExtraBold;
@@ -329,19 +332,20 @@ export default {
 }
 .content .form-content .other-login .other-login-wrapper .other-login-item {
   width: 110px;
-  height: 30px;
+  height: 35px;
   text-align: center;
+  box-shadow: 1px 1px 1px  #2e2e2e4d;
   cursor: pointer;
   font-weight: 600;
-  margin: 0 10px;
+  margin: 0 20px;
   transition: 0.5s;
   background-color: #fff;
-  border-radius: 10px;
+  border-radius: 8px;
   border: 1px solid rgb(231, 231, 231);
 }
 .content .form-content .other-login .other-login-wrapper .other-login-item svg {
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   fill: #000;
   vertical-align: middle;
 }

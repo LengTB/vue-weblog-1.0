@@ -1,10 +1,15 @@
 <template>
   <div>
-    <header :style="image" ref="hea">
-      <div class="filter"></div>
+    <header :style="image" ref="header">
+      <div class="filter" ref="filter"></div>
       <div class="text">
-        <span ref="text"></span><span v-show="bidding">_</span>
+        <div>
+          <span ref="text"></span>
+          <span v-show="bidding">_</span>
+        </div>
+        <div class="summary" v-show="summary != null">{{ summary }}</div>
       </div>
+
       <footer>
         <svg
           class="waves"
@@ -47,7 +52,7 @@
 
 <script>
 export default {
-  props: ["heigth"],
+  props: ["heigth", "summary", "title", "background"],
   data() {
     return {
       text: "Cold的窝",
@@ -58,18 +63,19 @@ export default {
       },
     };
   },
-
   mounted() {
-    window.setInterval(() => {
+    setInterval(() => {
       this.bidding = !this.bidding;
     }, 500);
 
-    let header = document.querySelector("header");
-    let filter = document.querySelector(".filter");
-    header.style.height = this.heigth + "vh";
-    filter.style.height = this.heigth + "vh";
+    if (this.heigth != null) {
+      let header = this.$refs.header;
+      let filter = this.$refs.filter;
+      header.style.height = this.heigth + "vh";
+      filter.style.height = this.heigth + "vh";
+    }
 
-    let text = this.text;
+    let text = this.title != null ? this.title : this.text;
     let index = 0;
     let intervalId = setInterval(() => {
       if (index < text.length) {
@@ -87,30 +93,49 @@ export default {
 };
 </script>
 
-<style scoped>
-
+<style lang="less" scoped>
 header {
-  max-width: 100vw;
+  max-width: 100%;
   height: calc(100vh - 65px);
   position: relative;
   background-position: center;
   background-size: cover;
   transition: height 3s ease;
   filter: brightness(0.95);
+  .summary {
+    font-family: 方正行黑简体;
+    font-size: 0.5em;
+    filter: opacity(0);
+    animation: summaryAnimation 4s ease-out forwards;
+  }
+  .summary::before{
+    margin-right: 10px;
+    content: "「";
+  }
+  .summary::after{
+    margin-left: 10px;
+    content: "」";
+  }
+}
+@keyframes summaryAnimation {
+  from {
+    filter: opacity(0);
+  }
+  to {
+    filter: opacity(80%);
+  }
 }
 header .text {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   font-family: YeZiGongChangAoYeHei;
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  align-items: center;
+  justify-content: center;
   color: white;
-  font-size: 40px;
-  text-shadow: 5px 5px 100px black;
-  text-align: center;
-  width: 300px;
-  height: 80px;
-  transform: translate(-50%, -50%);
+  font-size: 3em;
   text-shadow: -1px 2px 10px black;
+  gap: 50px;
 }
 #bidding {
   visibility: "hidden";
@@ -162,5 +187,6 @@ footer {
   height: calc(100vh - 65px);
   transition: height 3s ease;
   background: url("@/assets/icon/bg.png");
+  z-index: 99999;
 }
 </style>

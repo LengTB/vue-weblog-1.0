@@ -1,5 +1,5 @@
 <template>
-  <div class="top">
+  <div class="top" ref="top">
     <img
       src="@/assets/icon/彩色裸底（logo放大版）.png"
       alt="logo"
@@ -30,12 +30,13 @@
 
 <script>
 export default {
-  props: {
-    index: {
-      type: Number,
-      require: true,
-    },
-  },
+  // props: {
+  //   index: {
+  //     type: Number,
+  //     require: true,
+  //   },
+  // },
+  props: ["index", "color"],
   data() {
     return {
       linkdata: [
@@ -71,7 +72,11 @@ export default {
       this.$store.commit("setLogin", false);
     }
   },
-  mounted() {},
+  mounted() {
+    if (this.color != null) {
+      this.$refs.top.style.backgroundColor = this.color;
+    }
+  },
 };
 </script>
 

@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <HomeTop :index="index" @change="chageIndex"></HomeTop>
-    <HomeImage></HomeImage>
+    <HomeImage :title="'TobyCold的个人博客'" :summary="summary"></HomeImage>
     <div class="body">
       <div class="left">
         <HomeSummary
@@ -44,6 +44,7 @@ export default {
       summarys: {},
       bodys: "",
       card: {},
+      summary:"莫道桑榆晚，为霞尚满天"
     };
   },
   components: {
