@@ -1,154 +1,184 @@
 <template>
   <div class="footer">
-    <span>
-      {{ context }}
-      <a href="https://tobycold.top/" rel="noopener noreferrer">
-      <img src="@/assets/icon/svg.svg" alt=""></a>
-      -
-      <a
-        href="https://beian.miit.gov.cn"
-        target="_blank"
-        rel="noopener noreferrer nofollow"
-        >{{ nms }}</a>
-    </span>
-    <span
-      >本站点由
-      <svg
-        width="66px"
-        height="18px"
-        viewBox="0 0 80 18"
-        version="1.1"
-        xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-      >
-        <title>logo</title>
-        <g
-          id="页面-1"
-          stroke="none"
-          stroke-width="1"
-          fill="none"
-          fill-rule="evenodd"
+    <span class="left">
+      <span class="item">
+        <span>{{ info.context }}</span>
+        <span>
+          本站由
+          <svg
+            t="1704700321530"
+            class="icon"
+            viewBox="0 0 3509 1024"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            p-id="2562"
+            width="35"
+          >
+            <path
+              d="M2684.352667 337.012766h-330.531441v45.367377h103.696455v181.46761h-123.139481v51.848702h123.139481v291.645389h51.847752v-291.645389h129.620806V900.860519h103.695506v-51.847753h-45.366428V337.012766h-12.96265z m-174.987234 220.354611v-174.987234h129.620806v181.46761h-129.620806v-6.480376zM1757.568746 771.240663h265.721038v51.847752H1757.568746v-51.847752z m-187.948934-90.734754c0 90.734754-6.481325 155.544208-25.924351 213.873285 0 6.481325 0 6.481325 6.481325 6.481325h51.847753c19.443026-84.253429 19.443026-149.062883 19.443025-200.911585h71.290779v149.063832h-45.366427c-6.481325 0-6.481325 0-6.481326 6.480376l12.961701 45.367377h90.734754V337.012766h-168.506858l-6.480375 343.493143z m58.329078-19.443026v-116.658156h71.290778V667.544208h-71.290778v-6.481325z m64.809453-278.68274v116.658156h-71.290779v-116.658156h71.290779z"
+              fill="#56606F"
+              p-id="2563"
+            ></path>
+            <path
+              d="M2042.73281 537.924351h64.810403V492.556974h-187.948934c0-12.961701 0-32.404727 12.961701-45.367377h168.505908v-45.366428h-45.366427c6.480376-25.924351 19.443026-58.329078 19.443026-58.329078 0-6.481325 0-6.481325-6.481326-6.481325h-38.886051l-19.443026 64.810403H1951.999006c6.481325-25.924351 6.481325-51.848702 12.961701-84.253429 0-6.481325 0-6.481325-6.480376-6.481325h-38.886052c-6.481325 32.405676-6.481325 64.810403-19.443026 90.734754h-32.405676l-19.443026-64.810403h-38.886052c-6.480376 0-6.480376 0-6.480376 6.481325s6.480376 32.404727 19.443026 58.329078h-45.367377v45.366428h110.176831c-6.480376 12.96265-6.480376 32.405676-19.443026 45.367377h-103.695506v45.367377h77.772104c-32.405676 45.366428-64.810403 64.809454-77.772104 71.290779v51.847753c0 6.481325 6.480376 6.481325 6.480376 0 19.443026 6.481325 32.405676-12.961701 45.367377-25.923402h187.948935V706.43026H1854.783876l6.481325-38.886052c0-6.481325 0-6.481325-6.481325-6.481325h-45.367377l-6.480376 84.253428c0 6.481325 0 6.481325 6.480376 6.481326h252.759337v123.138531H1951.999006c-6.481325 0-6.481325 0-6.481325 6.481325l12.96265 45.367377h155.544208v-213.873285h-58.329078V602.733805c25.923402 19.443026 45.366428 38.886052 71.290778 45.367377 6.481325 6.481325 6.481325 6.481325 6.481325 0v-45.367377c-25.924351-6.480376-58.329078-25.923402-90.734754-64.809454z m-58.329077 0c6.481325 19.443026 25.924351 38.886052 38.886051 51.847753h-162.024583c12.961701-12.961701 25.923402-32.404727 38.886052-51.847753h84.25248z m401.823169 200.910635l-90.734754 71.291728V492.556974h-123.138532v51.847753h71.290779v304.608039c-19.443026 12.961701-32.404727 19.443026-32.404727 19.443026l32.404727 38.886052 149.062883-110.17778-6.480376-58.329078c6.480376 0 0 0 0 0z m-136.101182-298.125765h51.847753c6.481325 0 6.481325-6.481325 6.481325-6.481325l-77.772104-116.658156h-51.848702l-6.480376 6.481326c6.480376 6.480376 77.772104 116.658156 77.772104 116.658155z m596.25248-97.21513h421.265246v51.847753H2846.3782v-51.847753z m155.544207 259.239714h330.531442V550.886052h-537.923402v51.847753h149.062883c-32.404727 84.253429-110.176831 285.165014-110.176831 291.645389s0 6.481325 6.480376 6.481325h466.632623c6.481325 0 6.481325-6.481325 6.481325-6.481325l-71.290779-181.467609h-51.848702c-6.480376 0-6.480376 6.480376-6.480376 6.480375 0 6.481325 51.847753 129.620806 51.847753 129.620806H2924.150304c-6.481325-6.481325 77.772104-246.278962 77.772103-246.278961z"
+              fill="#56606F"
+              p-id="2564"
+            ></path>
+            <path
+              d="M1219.645344 836.050116c-19.443026 19.443026-64.810403 58.329078-149.063831 58.329078H590.987189c149.062883-142.581557 265.721038-265.721038 278.683688-272.202363 12.961701-12.961701 38.886052-38.886052 64.809454-58.329078 51.848702-58.329078 97.21513-64.809454 142.582507-64.809454 58.329078 0 103.696455 19.443026 142.582506 58.329078 77.772104 71.290779 77.772104 207.39196 0 278.682739z m97.21513-369.417493c-58.329078-58.329078-142.582507-103.695506-226.835935-103.695506-84.25248 0-149.062883 32.404727-207.391961 71.290779-19.443026 19.443026-58.329078 45.367377-84.253429 84.253429-32.404727 19.443026-511.999051 505.518675-511.99905 505.518675h706.42931c45.367377 0 84.253429 0 110.17778-6.481325 71.290779-6.481325 149.062883-38.886052 207.39196-90.733805 123.139481-129.620806 123.139481-337.012766 6.481325-460.152247z"
+              fill="#00A3FF"
+              p-id="2565"
+            ></path>
+            <path
+              d="M519.69641 434.227896C454.886007 388.860519 396.556929 369.417493 318.784825 369.417493c-90.733805 0-174.987234 38.886052-226.834986 103.696455C-31.189642 602.733805-31.189642 810.126714 98.430215 939.746571c51.848702 51.847753 110.17778 77.772104 174.987233 77.772104l129.620806-123.139481h-71.291728c-71.290779-6.480376-116.658156-32.404727-149.062882-58.329078-77.772104-77.772104-77.772104-200.910635 0-285.164064 38.886052-38.886052 77.772104-58.329078 142.582506-58.329078 38.886052 0 77.772104 6.481325 129.619857 58.329078 19.443026 25.924351 77.772104 64.810403 97.21513 90.733805h6.481325l77.772104-90.733805c-25.924351-32.404727-90.734754-84.253429-116.658156-116.658156"
+              fill="#00C8DC"
+              p-id="2566"
+            ></path>
+            <path
+              d="M1109.467564 285.165014C1051.138487 116.658156 882.632578 0 701.164019 0c-220.353661 0-395.340895 162.025533-434.226946 369.417493 12.961701 0 32.404727-6.480376 51.847752-6.480376s51.847753 6.480376 71.290779 6.480376c32.405676-142.581557 155.544208-239.796687 298.126715-239.796687 123.139481 0 233.316311 71.290779 285.164064 181.467609 0 0 6.481325 6.481325 6.481325 0 45.367377-6.480376 90.733805-25.923402 129.619856-25.923401 0 12.961701 0 12.961701 0 0"
+              fill="#006EFF"
+              p-id="2567"
+            ></path>
+          </svg>
+          提供云服务支持
+        </span>
+      </span>
+      <span class="item">
+        <span>
+          <img
+            src="@/assets/skills/备案.png"
+            alt=""
+          />
+          <a href="https://beian.miit.gov.cn">赣ICP备</a>
+          <a
+            href="https://beian.miit.gov.cn"
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            >{{ info.nms }}</a
+          ></span
         >
-          <g id="logo" fill-rule="nonzero">
-            <g
-              id="XMLID_25_"
-              transform="translate(30.592488, 1.100000)"
-              fill="#253554"
-            >
-              <path
-                d="M30.8788968,0.6 L21.8088578,0.6 L21.8088578,1.9 L24.5604427,1.9 L24.5604427,6.7 L21.2993051,6.7 L21.2993051,8 L24.5604427,8 L24.5604427,15.9 L26.089101,15.9 L26.089101,8 L29.5540597,8 L29.5540597,15.6 L32.3056445,15.6 L32.3056445,14.3 L31.0827179,14.3 L31.0827179,0.6 L30.8788968,0.6 Z M25.9871904,6.5 L25.9871904,1.9 L29.5540597,1.9 L29.5540597,6.7 L26.089101,6.7 L26.089101,6.5 L25.9871904,6.5 Z"
-                id="XMLID_38_"
-              ></path>
-              <polygon
-                id="XMLID_14_"
-                points="5.60508028 12.2 12.8407294 12.2 12.8407294 13.5 5.60508028 13.5"
-              ></polygon>
-              <path
-                d="M0.611463304,9.8 C0.611463304,12.1 0.509552753,14 0,15.5 C0,15.6 0,15.6 0.101910551,15.6 C0.101910551,15.6 1.22292661,15.6 1.42674771,15.6 C1.93630046,13.4 1.93630046,11.6 1.93630046,10.3 L3.77069037,10.3 L3.77069037,14.3 L2.54776377,14.3 C2.44585321,14.3 2.44585321,14.3 2.44585321,14.4 L2.85349542,15.6 L5.19743808,15.6 L5.19743808,0.6 L0.713373854,0.6 L0.611463304,9.8 L0.611463304,9.8 Z M2.03821101,9.2 L2.03821101,6.2 L3.87260092,6.2 L3.87260092,9.4 L2.03821101,9.4 L2.03821101,9.2 Z M3.87260092,1.9 L3.87260092,5 L2.03821101,5 L2.03821101,1.9 L3.87260092,1.9 Z"
-                id="XMLID_33_"
-              ></path>
-              <path
-                d="M13.3502821,5.9 L15.0827615,5.9 L15.0827615,4.7 L9.88532341,4.7 C9.98723396,4.3 10.0891445,3.8 10.3948762,3.5 L14.8789404,3.5 L14.8789404,2.3 L13.6560138,2.3 C13.7579243,1.6 14.1655665,0.7 14.1655665,0.7 C14.1655665,0.6 14.1655665,0.6 14.063656,0.6 L12.9426399,0.6 L12.4330872,2.3 L10.8025184,2.3 C10.9044289,1.6 11.0063395,0.8 11.2101606,0.1 C11.2101606,0 11.2101606,0 11.10825,0 C11.0063395,0 10.1910551,0 9.88532341,0 C9.78341286,0.9 9.68150231,1.7 9.37577066,2.4 L8.4585757,2.4 L7.94902295,0.7 L6.82800689,0.7 C6.72609634,0.7 6.72609634,0.7 6.72609634,0.8 C6.72609634,0.9 6.92991744,1.7 7.23564909,2.4 L6.01272249,2.4 L6.01272249,3.6 L8.8662179,3.6 C8.76430735,4 8.6623968,4.5 8.35666515,4.8 L5.60508028,4.8 L5.60508028,6 L7.74520185,6 C6.82800689,7.2 6.01272249,7.7 5.60508028,8 C5.60508028,8.1 5.60508028,9.3 5.60508028,9.3 C5.60508028,9.4 5.70699083,9.4 5.80890138,9.3 C6.21654359,9.2 6.72609634,8.8 7.03182799,8.4 L12.025445,8.4 L12.025445,10.2 L8.15284405,10.2 L8.2547546,9.1 C8.2547546,9 8.2547546,9 8.15284405,9 C8.0509335,9 6.92991744,9 6.92991744,9 L6.82800689,11.2 C6.82800689,11.3 6.82800689,11.3 6.92991744,11.3 C7.03182799,11.3 13.6560138,11.3 13.6560138,11.3 L13.6560138,14.5 L10.7006078,14.5 C10.5986973,14.5 10.5986973,14.5 10.5986973,14.6 L11.0063395,15.8 L15.2865826,15.8 L15.2865826,10.2 L13.6560138,10.2 L13.6560138,7.8 C14.2674771,8.3 14.8789404,8.8 15.4904037,9 C15.5923142,9.1 15.6942248,9.1 15.6942248,9 C15.6942248,9 15.6942248,7.8 15.6942248,7.7 C15.0827615,7.5 14.1655665,7 13.3502821,5.9 Z M11.7197133,5.9 C11.9235344,6.4 12.3311766,6.9 12.7388188,7.2 L8.35666515,7.2 C8.76430735,6.8 8.96812845,6.3 9.37577066,5.9 L11.7197133,5.9 L11.7197133,5.9 Z"
-                id="XMLID_30_"
-              ></path>
-              <path
-                d="M22.6241422,11.3 C22.6241422,11.3 21.4012156,12.2 20.178289,13.1 L20.178289,4.7 L16.9171514,4.7 L16.9171514,6.2 L18.7515413,6.2 L18.7515413,14.3 C18.2419886,14.7 17.8343464,14.8 17.8343464,14.8 L18.7515413,15.9 L22.7260528,13 L22.6241422,11.3 C22.9298739,11.3 22.8279633,11.2 22.6241422,11.3 Z"
-                id="XMLID_8_"
-              ></path>
-              <path
-                d="M18.9553624,3.4 L20.3821101,3.4 C20.5859312,3.4 20.5859312,3.3 20.5859312,3.3 L18.5477202,0.2 L17.019062,0.2 L16.9171514,0.3 C17.019062,0.4 18.9553624,3.4 18.9553624,3.4 Z"
-                id="XMLID_7_"
-              ></path>
-              <path
-                d="M39.4393831,7.8 L48.4075115,7.8 L48.4075115,6.3 L33.6304817,6.3 L33.6304817,7.8 L37.7069037,7.8 C36.7897088,10 34.8534083,15.4 34.7514978,15.5 C34.7514978,15.6 34.7514978,15.6 34.8534083,15.6 L47.5922271,15.6 C47.6941377,15.6 47.6941377,15.5 47.6941377,15.5 L45.8597478,10.6 L44.3310895,10.6 C44.229179,10.6 44.229179,10.7 44.229179,10.7 C44.229179,10.8 45.5540161,14.2 45.5540161,14.2 L37.197351,14.2 L39.4393831,7.8 Z"
-                id="XMLID_5_"
-              ></path>
-            </g>
-            <g id="XMLID_19_">
-              <path
-                d="M22.5,14.7 C22.1,15.1 21.3,15.7 19.9,15.7 C19.3,15.7 18.6,15.7 18.3,15.7 C17.9,15.7 14.9,15.7 11.3,15.7 C13.9,13.2 16.1,11.1 16.3,10.9 C16.5,10.7 17,10.2 17.5,9.8 C18.5,8.9 19.3,8.8 20,8.8 C21,8.8 21.8,9.2 22.5,9.8 C23.9,11.1 23.9,13.4 22.5,14.7 M24.2,8.2 C23.2,7.1 21.7,6.4 20.1,6.4 C18.7,6.4 17.5,6.9 16.4,7.7 C16,8.1 15.4,8.5 14.9,9.1 C14.5,9.5 5.9,17.9 5.9,17.9 C6.4,18 7,18 7.5,18 C8,18 18,18 18.4,18 C19.2,18 19.8,18 20.4,17.9 C21.7,17.8 23,17.3 24.1,16.3 C26.4,14.1 26.4,10.4 24.2,8.2 Z"
-                id="XMLID_22_"
-                fill="#00A3FF"
-              ></path>
-              <path
-                d="M10.2,7.6 C9.1,6.8 8,6.4 6.7,6.4 C5.1,6.4 3.6,7.1 2.6,8.2 C0.4,10.5 0.4,14.1 2.7,16.4 C3.7,17.3 4.7,17.8 5.9,17.9 L8.2,15.7 C7.8,15.7 7.3,15.7 6.9,15.7 C5.6,15.6 4.8,15.2 4.3,14.7 C2.9,13.3 2.9,11.1 4.2,9.7 C4.9,9 5.7,8.7 6.7,8.7 C7.3,8.7 8.2,8.8 9.1,9.7 C9.5,10.1 10.6,10.9 11,11.3 L11.1,11.3 L12.6,9.8 L12.6,9.7 C11.9,9 10.8,8.1 10.2,7.6"
-                id="XMLID_2_"
-                fill="#00C8DC"
-              ></path>
-              <path
-                d="M20.7,5.1 C19.6,2.1 16.7,0 13.4,0 C9.5,0 6.4,2.9 5.8,6.5 C6.1,6.5 6.4,6.4 6.8,6.4 C7.2,6.4 7.7,6.5 8.1,6.5 L8.1,6.5 C8.6,4 10.8,2.2 13.4,2.2 C15.6,2.2 17.5,3.5 18.4,5.4 C18.4,5.4 18.5,5.5 18.5,5.4 C19.2,5.3 20,5.1 20.7,5.1 C20.7,5.2 20.7,5.2 20.7,5.1"
-                id="XMLID_1_"
-                fill="#006EFF"
-              ></path>
-            </g>
-          </g>
-        </g></svg
-      >提供云服务</span
-    >
-    <span>
-      <img
-        style="
-          width: 15px;
-          height: 15px;
-          position: relative;
-          top: 2px;
-        "
-        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAAABGdBTUEAALGPC/xhBQAAAwBQTFRFtJR+///krYt6n2hV0a52/b9Ummlc2aht27qH//eX26xi8Na74bNo+M562rB75MGP5LaA5LaC47xp68l57N2y/vrs369n/++G1qx+/tiP6sN6+//e//nQ79l/+NqC6MZ87NmN+PPJ3qdc3alT25xR46xT57xs69KY57Vcw38+2a+C05NwyoRb6che5LxZ5MJt7d6A4bBn0Ktx+/TQ3KdZ8d/H9N+L7+ij8+mS9/O48deu///i7NOF+fG28+eq/vzgAAAAgVg6o31ShGlK7HEtxGsznl8wp41Z+sREcoWUHD6XlIx1xa58tYA/6Zc09oI24kYeo5mEBAVtbmJiNhpNtJlYAAiR96Q53bZp2U4qFzCJa3OEeWRg14pGxb2H/+Jj0RUKvbp+7XE02Mx3AABqzcJxfHp502U9CwZn/7VJzng6/Mxk24Y43Z9CXllm2QAG8F4eu0wo07yHuk0kk2A2yrZ4aX6O9LBA4JU504c9+9Jv46pKABB65G82vwAR2203YB5Q118zzCcT/S0U1Ugq00AmzaxSxicTTg5OxVIkyz0h/SsKDABdzD4txBgKrKJzjYZ3/75gQiREVDhTyQACaQI2XF94wQwLqbSRzxcR0QwR+59GuYtYABuOTAA5tgAQxj4dsQ4OAABhtKNm1JY94qlXyVkqbHmKVk5vzywa/I4sTjVP/9JmhI+Z8K9I1sB41jEfvZBe0iEa83wo7cJi/+9t/9hN469L1hoX6KA945M925tF+MRY15FT2J5Y8M1k67tc3oMy8dNp1XQo1o480oM92pZK68Vd5rZW5sBV6cpt7tRw6K5J7LlP6bFL6bdS7r5Q6L9O4KRM6LlP8slW58Rm6F8mAACAlI+B0zgiAAR33pBE13U41mUw2kko1AMJ6YI+8stuAABm/sVSORQ4cniCk3ha/9te4rJT5L5R8Nh21ZBG5bFQ3qNJ57ta3plE7c1m7Mlb6cFg6r1Z7cph68BX5rlZ6cZe9eNzAABuzgACAAB51z4g1h8Y/9JY5LVdEd5zqQAAAEF0Uk5TyxjR92/D++WYNfUc+cGpn7HH4MSDIdu+rrLmKUzsMPsnWsbG0uS8jOScSBRd8PTs4ecCXOtBunyrAmkclEJBCABK/YzMAAABgElEQVQY02NwgABGKwYmK2sohwFM2vIxuzk6O7FJyCAE7Tc+KXG95hLR/2SOPUzQmnf1s833b0b+mj1jsqQ9RFCaJyRv1aa/K+/NnD4xepKUAliQ0/u6e8H9DTtm3ZxyLfHnBDmQIDfrjVu+Afl///z5++tP8s80cVGgIEt44PVQ/1/Llry8nZCU+vPGPxGgIIefT1iwR/GCu3fqY+NjfseV8wMF2XMeegUVPmjpamytTc+IelUhBhTkysr0/D2/+27nnQfNdSlljyuFgIICudlFc+ct7Gtvutc7taa06oUNUFDw9tI1a289WtTR0PPo99Pn/6uFgYLy+/buerj+2fLFbdNWPN2yc/d2WaCg4su3rw/veb7t8bp/W/8dfP3iox3IR8a6J48e+XDgzbv9h94fO6VvC/amqeH37ye+Hv/05fPbb6evmtiBBc1+vPr///ObT+ffX/r27sMPC7CgvY3e5SsXzp098/XjxS8G5pbQQNbW0VRWUdVQUlPXMgLxASGRxIfJhdfLAAAAAElFTkSuQmCC"
-        alt=""
-      />
-      <a
-        href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode="
-        target="_blank"
-        rel="noopener noreferrer nofollow"
-        >{{ IP }}</a
-      >
+        <span>
+          <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAAABGdBTUEAALGPC/xhBQAAAwBQTFRFtJR+///krYt6n2hV0a52/b9Ummlc2aht27qH//eX26xi8Na74bNo+M562rB75MGP5LaA5LaC47xp68l57N2y/vrs369n/++G1qx+/tiP6sN6+//e//nQ79l/+NqC6MZ87NmN+PPJ3qdc3alT25xR46xT57xs69KY57Vcw38+2a+C05NwyoRb6che5LxZ5MJt7d6A4bBn0Ktx+/TQ3KdZ8d/H9N+L7+ij8+mS9/O48deu///i7NOF+fG28+eq/vzgAAAAgVg6o31ShGlK7HEtxGsznl8wp41Z+sREcoWUHD6XlIx1xa58tYA/6Zc09oI24kYeo5mEBAVtbmJiNhpNtJlYAAiR96Q53bZp2U4qFzCJa3OEeWRg14pGxb2H/+Jj0RUKvbp+7XE02Mx3AABqzcJxfHp502U9CwZn/7VJzng6/Mxk24Y43Z9CXllm2QAG8F4eu0wo07yHuk0kk2A2yrZ4aX6O9LBA4JU504c9+9Jv46pKABB65G82vwAR2203YB5Q118zzCcT/S0U1Ugq00AmzaxSxicTTg5OxVIkyz0h/SsKDABdzD4txBgKrKJzjYZ3/75gQiREVDhTyQACaQI2XF94wQwLqbSRzxcR0QwR+59GuYtYABuOTAA5tgAQxj4dsQ4OAABhtKNm1JY94qlXyVkqbHmKVk5vzywa/I4sTjVP/9JmhI+Z8K9I1sB41jEfvZBe0iEa83wo7cJi/+9t/9hN469L1hoX6KA945M925tF+MRY15FT2J5Y8M1k67tc3oMy8dNp1XQo1o480oM92pZK68Vd5rZW5sBV6cpt7tRw6K5J7LlP6bFL6bdS7r5Q6L9O4KRM6LlP8slW58Rm6F8mAACAlI+B0zgiAAR33pBE13U41mUw2kko1AMJ6YI+8stuAABm/sVSORQ4cniCk3ha/9te4rJT5L5R8Nh21ZBG5bFQ3qNJ57ta3plE7c1m7Mlb6cFg6r1Z7cph68BX5rlZ6cZe9eNzAABuzgACAAB51z4g1h8Y/9JY5LVdEd5zqQAAAEF0Uk5TyxjR92/D++WYNfUc+cGpn7HH4MSDIdu+rrLmKUzsMPsnWsbG0uS8jOScSBRd8PTs4ecCXOtBunyrAmkclEJBCABK/YzMAAABgElEQVQY02NwgABGKwYmK2sohwFM2vIxuzk6O7FJyCAE7Tc+KXG95hLR/2SOPUzQmnf1s833b0b+mj1jsqQ9RFCaJyRv1aa/K+/NnD4xepKUAliQ0/u6e8H9DTtm3ZxyLfHnBDmQIDfrjVu+Afl///z5++tP8s80cVGgIEt44PVQ/1/Llry8nZCU+vPGPxGgIIefT1iwR/GCu3fqY+NjfseV8wMF2XMeegUVPmjpamytTc+IelUhBhTkysr0/D2/+27nnQfNdSlljyuFgIICudlFc+ct7Gtvutc7taa06oUNUFDw9tI1a289WtTR0PPo99Pn/6uFgYLy+/buerj+2fLFbdNWPN2yc/d2WaCg4su3rw/veb7t8bp/W/8dfP3iox3IR8a6J48e+XDgzbv9h94fO6VvC/amqeH37ye+Hv/05fPbb6evmtiBBc1+vPr///ObT+ffX/r27sMPC7CgvY3e5SsXzp098/XjxS8G5pbQQNbW0VRWUdVQUlPXMgLxASGRxIfJhdfLAAAAAElFTkSuQmCC"
+            alt=""
+          />
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode="
+            >赣公网安备</a
+          >
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode="
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            >{{ info.IP }}</a
+          ></span
+        >
+      </span>
+    </span>
+    <span class="right">
+      <a href="#">订阅</a>
+      <a href="https://github.com/LengTB/vue-weblog-1.0">源码</a>
+      <a href="#/about">联系我</a>
+      <a href="#">开源协议</a>
     </span>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      context: "2023 @",
-      title: "Cold的窝",
-      nms: "赣ICP备2022010266号-3",
-      IP: "赣公网安备36042302000157号",
-    };
-  },
+  props: ["info"],
 };
 </script>
 
 <style lang="less" scoped>
 .footer {
-  height: 80px;
+  font-family: Cubic;
+  padding: 10px;
+  --color: #919191;
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-around;
   text-align: center;
-  font-size: 13px;
-  color: #909399;
+  gap: 20px;
+  font-size: 0.1em;
   background-color: white;
   align-items: center;
-  span{
+  .left {
     display: flex;
-    align-content: center;
-    justify-items: center;
+    flex-direction: column;
+    gap: 5px;
+    .item {
+      color: var(--color);
+      display: flex;
+      font-size: 10px;
+    }
+    .item a {
+      color: var(--color);
+      text-decoration: none;
+    }
+    .item:nth-child(1) {
+      height: 20px;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+    .item:nth-child(2) {
+      gap: 10px;
+      span {
+        img {
+          width: 10px;
+          padding: 4px;
+        }
+        border-radius: 3px;
+        display: flex;
+        justify-content: center;
+        background-color: #5d5d5d;
+        :nth-child(2) {
+          padding-right: 5px;
+          color: white;
+          display: flex;
+          align-items: center;
+          background-color: #5d5d5d;
+        }
+        :nth-child(3) {
+          border-radius: 0 3px 3px 0;
+          padding: 0 5px;
+          color: black;
+          display: flex;
+          align-items: center;
+          background-color: #DBCF94;
+        }
+      }
+      span:nth-child(2) {
+        :nth-child(3) {
+          padding: 0 5px;
+          color: white;
+          display: flex;
+          align-items: center;
+          background-color: #CF3034;
+        }
+      }
+    }
+    .item a:hover {
+      color: #ffffff;
+    }
   }
-
-  span * {
-    height: 19px;
-    color: #909399;
-    margin: 0px 5px;
-  }
-  span a {
+  .right {
     display: flex;
-    align-items: center;
-    text-decoration: none;
-    transition: all 0.35s ease;
-  }
-  span a:hover {
-    color: #fb6c28;
+    gap: 10px;
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      width: 60px;
+      height: 25px;
+      text-decoration: none;
+      color: var(--color);
+    }
+    a:hover {
+      color: #ffffff;
+      background-color: #919191;
+    }
   }
 }
 </style>

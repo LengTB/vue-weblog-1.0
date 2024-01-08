@@ -9,7 +9,6 @@
         </div>
         <div class="summary" v-show="summary != null">{{ summary }}</div>
       </div>
-
       <footer>
         <svg
           class="waves"
@@ -28,21 +27,26 @@
               xlink:href="#gentle-wave"
               x="48"
               y="0"
-              fill="rgba(255,255,255,0.7"
+              fill="rgba(247,249,254, 0.3)"
             />
             <use
               xlink:href="#gentle-wave"
               x="48"
               y="3"
-              fill="rgba(255,255,255,0.5)"
+              fill="rgba(247,249,254, 0.5)"
             />
             <use
               xlink:href="#gentle-wave"
               x="48"
               y="5"
-              fill="rgba(255,255,255,0.3)"
+              fill="rgba(247,249,254, 0.8)"
             />
-            <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+            <use
+              xlink:href="#gentle-wave"
+              x="48"
+              y="7"
+              fill="rgba(247,249,254, 1)"
+            />
           </g>
         </svg>
       </footer>
@@ -96,7 +100,7 @@ export default {
 <style lang="less" scoped>
 header {
   max-width: 100%;
-  height: calc(100vh - 65px);
+  height: 100vh;
   position: relative;
   background-position: center;
   background-size: cover;
@@ -108,11 +112,11 @@ header {
     filter: opacity(0);
     animation: summaryAnimation 4s ease-out forwards;
   }
-  .summary::before{
+  .summary::before {
     margin-right: 10px;
     content: "「";
   }
-  .summary::after{
+  .summary::after {
     margin-left: 10px;
     content: "」";
   }
@@ -141,6 +145,7 @@ header .text {
   visibility: "hidden";
 }
 footer {
+  z-index: 99999;
   position: absolute;
   bottom: 1px;
   width: 100%;
@@ -184,7 +189,7 @@ footer {
 .filter {
   position: absolute;
   width: 100%;
-  height: calc(100vh - 65px);
+  height: 100vh;
   transition: height 3s ease;
   background: url("@/assets/icon/bg.png");
   z-index: 99999;

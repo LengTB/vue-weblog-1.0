@@ -6,9 +6,8 @@
       class="logo"
       @click="$router.push('/')"
     />
-    <div class="nav">
+    <div class="link">
       <router-link
-        class="item"
         v-for="(item, i) in linkdata"
         :key="i"
         :to="item.href"
@@ -17,26 +16,16 @@
       >
         {{ item.name }}
       </router-link>
-      <el-button
-        class="login"
-        type="primary"
-        @click="clickLogin"
-        v-show="this.$store.state.login"
-        >登录</el-button
-      >
+    </div>
+    <div class="login">
+      <el-avatar class="avatar" :src="circleUrl"></el-avatar>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  // props: {
-  //   index: {
-  //     type: Number,
-  //     require: true,
-  //   },
-  // },
-  props: ["index", "color"],
+  props: ["color"],
   data() {
     return {
       linkdata: [
@@ -84,65 +73,58 @@ export default {
 .top {
   --height: 55px;
   height: var(--height);
-  background-color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: space-between;
   transition: height 2s ease;
   animation: top 1s ease;
-  min-width: 470px;
-  position: relative;
+  backdrop-filter: blur(10px);
   .logo {
-    position: absolute;
+    padding: 0 10px;
+    backdrop-filter: light(10px);
     width: var(--height);
-    height: var(--height);
-    margin: 0px 20px;
     animation: top 1s ease-in;
-    z-index: 99;
   }
-  .nav {
-    .item {
-      font-family: YeZiGongChangAoYeHei;
-      height: var(--height);
-      line-height: var(--height);
-      padding: 0px 10px;
-      color: black;
-      text-decoration: none;
-      animation: top 1s ease;
-    }
-    .item:hover {
-      color: #fb6c28 !important;
-    }
-    height: 100%;
-    position: absolute;
-    width: 100%;
+  .link {
     display: flex;
-    justify-content: flex-end;
-    flex-direction: row;
+    width: 300px;
+    text-decoration: none;
+    justify-content: center;
     align-items: center;
-    .login:hover {
-      background-color: rgb(173, 67, 48);
-      border-color: rgb(173, 67, 48);
+    gap: 10px;
+    font-family: Cubic;
+    a {
+      color: #bebebe;
+      padding: 10px;
+      border-radius: 10px;
+      transition: all 0.35s ease;
+      text-decoration: none;
     }
-    .login {
-      color: white;
-      background-color: tomato;
-      border-color: tomato;
+    a:hover{
+      color: white !important;
+      background-color: rgba(0, 0, 0, 0.8);
+      text-shadow: none;
     }
-    > * {
-      margin: 0px 15px;
-    }
-    .active {
-      color: #fb6c28 !important;
-      text-shadow: 1px 1px 2px #feb18e, 0 0 1em #f49b72, 0 0 1.2em #f9986a;
-      border-bottom: 6px solid #fb6c28;
-    }
+  }
+  .login {
+    padding: 5px 10px;
   }
 }
-
+.active {
+  color: black !important;
+  text-shadow: 1px 1px 2px #888888, 0 0 1em #888888, 0 0 1.2em #888888
+}
 @keyframes top {
   from {
     height: 0px;
   }
   to {
     height: var(--height);
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .link > * {
+    visibility: hidden;
   }
 }
 </style>

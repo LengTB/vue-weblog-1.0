@@ -47,14 +47,6 @@ export default {
 body {
   margin: 0;
   padding: 0;
-  background-color: #efefef;
-  background-image: linear-gradient(
-      90deg,
-      rgba(60, 10, 30, 0.04) 3%,
-      transparent 0
-    ),
-    linear-gradient(1turn, rgba(60, 10, 30, 0.04) 3%, transparent 0);
-  background-size: 20px 20px;
 }
 /*滚动条里面轨道*/
 body::-webkit-scrollbar-track{

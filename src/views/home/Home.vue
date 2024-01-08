@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <HomeTop :index="index" @change="chageIndex"></HomeTop>
+    <HomeTop class="top" @change="chageIndex"></HomeTop>
     <HomeImage :title="'TobyCold的个人博客'" :summary="summary"></HomeImage>
     <div class="body">
       <div class="left">
@@ -26,7 +26,7 @@
         ></path>
       </svg>
     </el-backtop>
-    <HomeFooter></HomeFooter>
+    <HomeFooter :info="info"></HomeFooter>
   </div>
 </template>
 
@@ -44,7 +44,13 @@ export default {
       summarys: {},
       bodys: "",
       card: {},
-      summary:"莫道桑榆晚，为霞尚满天"
+      summary: "莫道桑榆晚，为霞尚满天",
+      info: {
+        context: " 版权所有 © 2023-2024 By TobyCold ",
+        title: "Cold的窝",
+        nms: "2022010266号-3",
+        IP: "36042302000157号",
+      },
     };
   },
   components: {
@@ -85,13 +91,15 @@ export default {
 
     getIndex(index) {
       this.$axios
-      .get("/user/summary/"+ (index - 1))
-      .then((res) => {
-        this.summarys = res.data.data;
-      })
-      .catch(() => {
-        this.$message.error("后台数据获取失败，请检查后端服务器运行是否正常！");
-      });
+        .get("/user/summary/" + (index - 1))
+        .then((res) => {
+          this.summarys = res.data.data;
+        })
+        .catch(() => {
+          this.$message.error(
+            "后台数据获取失败，请检查后端服务器运行是否正常！"
+          );
+        });
     },
   },
   computed: {},
@@ -122,14 +130,20 @@ body::-webkit-scrollbar-thumb {
   );
 }
 
+.home{
+  background-color: #F7F9FE;
+  .top{
+    width: 100%;
+    z-index: 1;
+    position: absolute;
+  }
+}
 .body {
   padding: 0;
   margin: 10px 100px 50px 100px;
   min-height: 60vh;
-
   display: flex;
   justify-content: space-evenly;
-  // align-content: flex-start;
   .left {
     width: 80%;
     height: auto;

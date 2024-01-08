@@ -1,6 +1,6 @@
 <template>
   <div class="newyear">
-    <HomeTop></HomeTop>
+    <HomeTop class="top"></HomeTop>
     <div class="body">
       <video
         :src="timeLeft == null ? videos[1] : videos[0]"
@@ -35,6 +35,9 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="footer">
+      <span>Copyright © 2023-2024 by TobyCold</span>
     </div>
   </div>
 </template>
@@ -173,7 +176,7 @@ video {
   display: flex;
   width: 100%;
   height: 100%;
-  font-family: 方正行黑简体;
+  font-family: Cubic;
   font-weight: bold;
   justify-content: center;
   align-items: center;
@@ -194,7 +197,11 @@ video {
     font-size: 2.5em;
   }
 }
-
+.top{
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
 .countdown {
   font-size: 1.5em;
   margin: 20px 0;
@@ -203,5 +210,14 @@ video {
 .countdown span:not(:last-child):after {
   content: ":";
   margin: 0 10px;
+}
+.footer{
+  position: absolute;
+  width: 100%;
+  color: rgb(255, 255, 255);
+  height: 20px;
+  font-family: 寒蝉点阵体;
+  bottom: 10px;
+  text-align: center;
 }
 </style>
