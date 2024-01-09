@@ -45,10 +45,7 @@
       </span>
       <span class="item">
         <span>
-          <img
-            src="@/assets/skills/备案.png"
-            alt=""
-          />
+          <img src="@/assets/skills/备案.png" alt="" />
           <a href="https://beian.miit.gov.cn">赣ICP备</a>
           <a
             href="https://beian.miit.gov.cn"
@@ -76,10 +73,9 @@
       </span>
     </span>
     <span class="right">
-      <a href="#">订阅</a>
-      <a href="https://github.com/LengTB/vue-weblog-1.0">源码</a>
-      <a href="#/about">联系我</a>
+      <a href="#">隐私协议</a>
       <a href="#">开源协议</a>
+      <a href="https://github.com/LengTB/vue-weblog-1.0">版权协议</a>
     </span>
   </div>
 </template>
@@ -116,7 +112,6 @@ export default {
       text-decoration: none;
     }
     .item:nth-child(1) {
-      height: 20px;
       justify-content: center;
       align-items: center;
       gap: 10px;
@@ -127,11 +122,11 @@ export default {
         img {
           width: 10px;
           padding: 4px;
+          background-color: #5d5d5d;
+          border-radius: 3px 0 0 3px;
         }
         border-radius: 3px;
         display: flex;
-        justify-content: center;
-        background-color: #5d5d5d;
         :nth-child(2) {
           padding-right: 5px;
           color: white;
@@ -145,7 +140,7 @@ export default {
           color: black;
           display: flex;
           align-items: center;
-          background-color: #DBCF94;
+          background-color: #dbcf94;
         }
       }
       span:nth-child(2) {
@@ -154,7 +149,7 @@ export default {
           color: white;
           display: flex;
           align-items: center;
-          background-color: #CF3034;
+          background-color: #cf3034;
         }
       }
     }
@@ -178,6 +173,19 @@ export default {
     a:hover {
       color: #ffffff;
       background-color: #919191;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .footer {
+    .left:nth-child(1) {
+      .item {
+        flex-direction: column;
+      }
+    }
+    .right:nth-child(2) {
+      flex-direction: column;
     }
   }
 }

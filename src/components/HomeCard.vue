@@ -114,7 +114,6 @@ export default {
   mounted() {
     //这里从仓库拿qq来渲染头像
     this.logoUrl = this.logoUrl + this.$store.state.qq;
-    console.log(this.card);
   },
 
   //计算属性，动态渲染
@@ -176,6 +175,7 @@ export default {
   margin-bottom: 10px;
 }
 .card .name img {
+  background-color: white;
   width: 27px;
   position: absolute;
   margin-top: 5px;

@@ -45,7 +45,7 @@
           <span class="item">技能</span>
           <span class="item">开启创造力</span>
           <span class="item">
-            <span v-for="item in skills" :key="item" class="item">
+            <span v-for="item in skills" :key="item" class="si">
               <img :src="item.img" alt="" />
               <span>{{ item.value }}</span>
             </span>
@@ -59,14 +59,72 @@
       </div>
       <div class="access">
         <div class="access-item">
-          <span>数据</span>
-          <span>访问统计</span>
+          <span class="ai">数据</span>
+          <span class="ai">访问统计</span>
+          <span class="ai">
+            <div>
+              <span>今日到访人数</span>
+              <span>100</span>
+              <span>今日到访人数</span>
+              <span>100</span>
+              <span>今日到访人数</span>
+              <span>100</span>
+            </div>
+            <div>
+              <span>今日到访人数</span>
+              <span>100</span>
+              <span>今日到访人数</span>
+              <span>100</span>
+              <span>今日到访人数</span>
+              <span>100</span>
+            </div>
+          </span>
         </div>
         <div class="access-item">
           <div class="location">
             <span>我现在住在中国，九江市</span>
           </div>
-          <div class="info">开发中</div>
+          <div class="info">
+            <div class="info-item">
+              <span>出生于</span>
+              <span style="color: #43a6c6">2002</span>
+            </div>
+            <div class="info-item">
+              <span @click="clickInfo">江西软件职业技术大学</span>
+              <span style="color: #8728aa">信息技术学院</span>
+            </div>
+            <div class="info-item">
+              <span>现在职业</span>
+              <span style="color: #c69043">大三学生👨‍🎓</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="journey">
+        <v-md-editor
+          class="journey-item"
+          style="background: rgba(0, 0, 0, 0.637); border-radius: 20px"
+          v-model="text"
+          mode="preview"
+          right-toolbar="preview"
+          default-show-toc="true"
+        ></v-md-editor>
+      </div>
+      <div class="acknowledgment">
+        <div>
+          <span class="left">
+            <span>致谢</span>
+            <span>赞赏名单 </span>
+            <span>感谢因为有你们，让我更加有创作的动力</span>
+          </span>
+          <span class="right"></span>
+        </div>
+        <div class="list">
+          <span class="i"></span>
+          <span class="i"></span>
+          <span class="i"></span>
+          <span class="i"></span>
+          <span class="i"></span>
         </div>
       </div>
     </div>
@@ -86,11 +144,11 @@
 
 <script>
 import HomeTop from "@/components/HomeTop.vue";
-// import MyImageTop from "@/components/HomeImage.vue";
 export default {
   name: "ColdAbout",
   data() {
     return {
+      text: "#### 心路历程 \n- [ ] Task ",
       index: 1,
       hover: false,
       item: "生活",
@@ -161,7 +219,6 @@ export default {
   },
   components: {
     HomeTop,
-    // MyImageTop,
   },
   mounted() {
     let currentIndex = 0;
@@ -192,6 +249,9 @@ export default {
     hoverImg() {
       this.hover = true;
     },
+    clickInfo() {
+      location.replace("https://www.jxuspt.com/Aheadedu.html");
+    },
   },
 };
 </script>
@@ -211,7 +271,7 @@ export default {
   height: 100%;
   font-family: Cubic;
   .content {
-    --color: white;
+    --color: #b9bec0;
     --background: rgba(0, 0, 0, 0.637);
     --radius-value: 20px;
     position: relative;
@@ -304,7 +364,7 @@ export default {
       color: white;
     }
     .header {
-      color: var(--color);
+      color: white;
       .header-item {
         border-radius: var(--radius-value);
         font-family: cubic;
@@ -323,6 +383,7 @@ export default {
         background: linear-gradient(to bottom right, #9942fcdc, #2194ffec);
       }
       .header-item:nth-child(2) {
+        color: var(--color);
         background: var(--background);
         span {
           border-radius: var(--radius-value);
@@ -337,7 +398,7 @@ export default {
       display: flex;
       justify-content: center;
       border: 1px solid #42444a;
-      color: var(--color);
+      color: white;
       align-items: center;
       border-radius: var(--radius-value);
       background: #2129bdb7;
@@ -347,54 +408,125 @@ export default {
     .skill {
       display: flex;
       gap: 10px;
+      color: var(--color);
+      .skill-item {
+        display: flex;
+        gap: 20px;
+        padding: 10px;
+        width: 100%;
+        border-radius: var(--radius-value);
+        background: var(--background);
+        border: 1px solid #42444a;
+      }
     }
     .access {
       display: flex;
       gap: 10px;
-      .location:hover {
-        animation: location-xy 5s ease forwards;
-        span {
-          visibility: location-y;
-          animation: location-y 1s ease-in-out forwards;
-        }
-      }
-      @keyframes location-y {
-        from {
-          filter: opacity(1);
-        }
-        to {
-          filter: opacity(0);
-        }
-      }
-      @keyframes location-xy {
-        from {
-          background-size: 100%;
-        }
-        to {
-          background-size: 130%;
-        }
-      }
-      .location {
-        transition: all 2s ease;
+
+      .access-item:nth-child(1) {
+        color: var(--color);
         display: flex;
-        align-items: flex-end;
-        width: 100%;
+        flex-direction: column;
+        background-color: var(--background);
         border-radius: 20px;
         border: 1px solid #42444a;
-        height: 130%;
-        background-image: url("@/assets/bg/map.jpg");
-        background-size: cover;
-        background-position: center;
-        span {
-          color: #b9bec0;
-          border-radius: 0 0 20px 20px;
-          border: 1px solid #42444a 0 0 0;
-          width: 100%;
+        padding: 10px;
+        gap: 10px;
+        .ai:nth-child(3) {
           padding: 10px;
-          background-color: rgba(92, 92, 91, 0.301);
-          backdrop-filter: blur(10px);
+          display: flex;
+          gap: 150px;
+          div {
+            display: flex;
+            gap: 5px;
+            flex-direction: column;
+            span:nth-child(odd) {
+              font-size: 0.2em;
+            }
+            span:nth-child(even) {
+              font-size: 2.5em;
+            }
+          }
+          div:nth-child(1) {
+            width: 70%;
+          }
+          div:nth-child(2) {
+            width: 100%;
+          }
+        }
+        .ai:nth-child(2) {
+          font-size: 2em;
         }
       }
+      .access-item:nth-child(2) {
+        .location:hover {
+          animation: location-xy 5s ease forwards;
+          span {
+            visibility: location-y;
+            animation: location-y 1s ease-in-out forwards;
+          }
+        }
+        @keyframes location-y {
+          from {
+            filter: opacity(1);
+          }
+          to {
+            filter: opacity(0);
+          }
+        }
+        @keyframes location-xy {
+          from {
+            background-size: 100%;
+          }
+          to {
+            background-size: 130%;
+          }
+        }
+        .location {
+          transition: all 2s ease;
+          display: flex;
+          align-items: flex-end;
+          width: 100%;
+          border-radius: 20px;
+          border: 1px solid #42444a;
+          height: 130%;
+          background-image: url("@/assets/bg/map.jpg");
+          background-size: cover;
+          background-position: center;
+          span {
+            color: #b9bec0;
+            border-radius: 0 0 20px 20px;
+            border: 1px solid #42444a 0 0 0;
+            width: 100%;
+            padding: 20px;
+            background-color: rgba(92, 92, 91, 0.301);
+            backdrop-filter: blur(10px);
+          }
+        }
+        .info {
+          color: var(--color);
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          background-color: var(--background);
+          span {
+            display: block;
+            margin: 10px;
+          }
+          span:nth-child(1) {
+            font-size: 0.5em;
+          }
+          span:nth-child(2) {
+            font-size: 1.5em;
+          }
+        }
+      }
+    }
+    .journey {
+      color: var(--color);
+      font-family: Cubic;
+      border-radius: 20px;
+      border: 1px solid #42444a;
     }
   }
   .footer {
@@ -428,8 +560,8 @@ export default {
   }
 }
 
-//小屏
-@media screen and (max-width: 1000px) {
+// 小屏
+@media screen and (max-width: 850px) {
   .tag {
     span {
       display: none;
@@ -468,19 +600,10 @@ export default {
       font-size: 3em;
     }
     .skill {
-      color: #bcbcbd;
       flex-direction: column;
-      div {
-        //
-        border-radius: var(--radius-value);
-        background: var(--background);
-        border: 1px solid #42444a;
-      }
       .skill-item:nth-child(1) {
         padding: 10px;
-        display: flex;
         flex-direction: column;
-        gap: 10px;
         .item:nth-child(2) {
           font-size: 2em;
         }
@@ -497,7 +620,7 @@ export default {
             border-radius: 20px;
             background: white;
           }
-          .item {
+          .si {
             background-color: #070707;
             padding: 3px 5px;
             height: 30px;
@@ -540,7 +663,6 @@ export default {
         padding: 10px;
         display: flex;
         flex-direction: column;
-        height: 200px;
         background-color: var(--background);
         border-radius: 20px;
         border: 1px solid #42444a;
@@ -549,7 +671,7 @@ export default {
         display: flex;
         flex-direction: column;
         gap: 10px;
-        height: 200px;
+        height: 300px;
         .location {
           background-color: var(--background);
           border-radius: 20px;
@@ -588,7 +710,7 @@ export default {
   }
 }
 //大屏
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 850px) {
   .content {
     margin: 20px 120px;
     align-items: center;
@@ -625,55 +747,78 @@ export default {
       }
     }
     .screen {
-      font-size: 5em;
+      font-size: 10em;
       height: 220px;
+      overflow: hidden;
     }
     .skill {
-      height: 300px;
-      color: #bcbcbd;
-      div {
-        padding: 10px;
-        width: 100%;
-        border-radius: var(--radius-value);
-        background: var(--background);
-        border: 1px solid #42444a;
-      }
-      .skill-item:nth-child(1) {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        .item:nth-child(2) {
-          font-size: 2em;
-        }
+      .skill-item:nth-child(1):hover {
         .item:nth-child(3) {
-          margin-top: 10px;
+          height: 190px;
+          animation: none;
           display: flex;
           flex-wrap: wrap;
           align-items: center;
-          color: #b6b6b6;
-          gap: 5px;
-          img {
-            padding: 5px;
-            height: 20px;
-            border-radius: 20px;
-            background: white;
-          }
-          .item {
+          color: var(--color);
+          gap: 10px;
+          overflow: clip;
+          .si {
+            img {
+              padding: 5px;
+              height: 20px;
+              border-radius: 20px;
+              background: white;
+            }
             background-color: #070707;
             padding: 3px 5px;
-            height: 30px;
             gap: 10px;
             display: flex;
             justify-content: space-evenly;
             align-items: center;
-            font-size: 0.8em;
+            font-size: 1em;
             border-radius: 20px;
             border: 1px solid #ccc;
           }
         }
       }
+      .skill-item:nth-child(1) {
+        flex-direction: column;
+        overflow: hidden;
+        .item:nth-child(2) {
+          font-size: 2em;
+        }
+        .item:nth-child(3) {
+          height: 190px;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 10px;
+          animation: item-x 60s linear infinite normal;
+          .si {
+            position: relative;
+            img {
+              height: 80px;
+              padding: 5px;
+              background-color: white;
+              border-radius: 20px;
+            }
+            display: flex;
+            align-items: center;
+            font-size: 0;
+          }
+          @keyframes item-x {
+            from {
+              transform: translate3d(-10%, 0, 0);
+            }
+            to {
+              transform: translate3d(100%, 0, 0);
+            }
+          }
+        }
+      }
       .skill-item:nth-child(2) {
         display: flex;
+        gap: 10px;
         flex-direction: column;
         .item:nth-child(2) {
           font-size: 2em;
@@ -694,11 +839,11 @@ export default {
       }
     }
     .access {
-      height: 200px;
       .access-item {
         width: 100%;
       }
       .access-item:nth-child(1) {
+        width: 70%;
         border-radius: 20px;
         border: 1px solid #42444a;
         background-color: #ccc;
@@ -714,7 +859,6 @@ export default {
           border-radius: 20px;
           border: 1px solid #42444a;
           height: 100%;
-          background-color: #ccc;
         }
       }
     }
@@ -732,19 +876,15 @@ export default {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 20px;
+      gap: 10px;
       a {
         padding: 5px 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 30px;
         color: white;
         font-size: 0.9em;
         text-decoration: none;
       }
       a:hover {
-        border-radius: 20px;
+        border-radius: 15px;
         color: rgb(34, 137, 255);
         background-color: #bd8634d3;
         font-size: 0.9em;

@@ -34,12 +34,16 @@ import '@kangc/v-md-editor/lib/plugins/tip/tip.css';
 // 代码复制插件
 import createCopyCodePlugin from '@kangc/v-md-editor/lib/plugins/copy-code/index';
 import '@kangc/v-md-editor/lib/plugins/copy-code/copy-code.css';
+//list
+import createTodoListPlugin from '@kangc/v-md-editor/lib/plugins/todo-list/index';
+import '@kangc/v-md-editor/lib/plugins/todo-list/todo-list.css';
+
 
 VMdEditor.Codemirror = Codemirror;
 // 编辑器
 VMdEditor.use(githubTheme, {
   Hljs: hljs,
-}).use(createTipPlugin()).use(createCopyCodePlugin());
+}).use(createTipPlugin()).use(createCopyCodePlugin()).use(createTodoListPlugin());
 
 
 Vue.use(VMdEditor);

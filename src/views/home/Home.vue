@@ -71,7 +71,6 @@ export default {
       .catch(() => {
         this.$message.error("后台数据获取失败，请检查后端服务器运行是否正常！");
       });
-
     this.$axios
       .get("/user/summary/0")
       .then((res) => {
@@ -130,33 +129,25 @@ body::-webkit-scrollbar-thumb {
   );
 }
 
-.home{
-  background-color: #F7F9FE;
-  .top{
+.home {
+  background-color: #f7f9fe;
+  .top {
     width: 100%;
     z-index: 1;
     position: absolute;
   }
 }
 .body {
-  padding: 0;
-  margin: 10px 100px 50px 100px;
+  margin: 20px;
   min-height: 60vh;
   display: flex;
   justify-content: space-evenly;
   .left {
-    width: 80%;
-    height: auto;
-  }
-  .right {
-    height: auto;
+    width: 100%;
   }
 }
 
 @media (max-width: 992px) {
-  .left {
-    width: 100%;
-  }
   .right {
     display: none;
   }
