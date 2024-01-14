@@ -93,11 +93,12 @@ export default {
     gap: 10px;
     font-family: Cubic;
     a {
-      color: #bebebe;
+      color: white;
       padding: 10px;
       border-radius: 10px;
       transition: all 0.35s ease;
       text-decoration: none;
+      mix-blend-mode: difference;
     }
     a:hover{
       color: white !important;

@@ -338,7 +338,7 @@ export default {
       }
       img {
         object-fit: fill;
-        background-color: var(--color);
+        background-color: white;
         border-radius: 200px;
       }
       .status {

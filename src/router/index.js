@@ -43,7 +43,6 @@ const router = new VueRouter({
         {
             path: '/console',
             component: () => import('@/views/home/Console.vue'),
-            redirect: '/console/context',
             children: [
                 {
                     path: 'context',
