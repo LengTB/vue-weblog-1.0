@@ -33,16 +33,16 @@ export default {
 }
 
 @font-face {
-  font-family: "方正行黑简体";
-  src: url("@/assets/font/方正行黑简体.TTF");
+  font-family: "xinghei";
+  src: url("@/assets/font/xinghei.TTF");
 }
 @font-face {
   font-family: "Cubic";
   src: url("@/assets/font/Cubic_11_1.010_R.ttf");
 }
 @font-face {
-  font-family: "寒蝉点阵体";
-  src: url("@/assets/font/寒蝉点阵体.ttf");
+  font-family: "dianzhen";
+  src: url("@/assets/font/dianzhen.ttf");
 }
 body {
   margin: 0;

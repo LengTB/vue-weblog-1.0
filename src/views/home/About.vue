@@ -261,7 +261,7 @@ export default {
   position: fixed;
   width: 100%;
   height: 100%;
-  background-image: url("@/assets/bg/像素风-玛丽亚.jpg");
+  background-image: url("@/assets/bg/about.jpg");
   background-position: center;
   background-size: cover;
   z-index: -1;
