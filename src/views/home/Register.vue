@@ -25,7 +25,7 @@
             <input type="password" v-model="password" placeholder="密码" />
           </div>
           <div>
-            <input type="text" v-model="codeNum" placeholder="邮箱" />
+            <input type="text" v-model="email" placeholder="邮箱" />
             <span @click="getCode">{{ code }}</span>
           </div>
         </div>
@@ -45,7 +45,7 @@ export default {
       text: "",
       password: "",
       code: "验证码",
-      codeNum: "",
+      email: "",
     };
   },
   methods: {
@@ -56,7 +56,7 @@ export default {
           position: "bottom-right",
           message: "请输入账号和密码哦"
         })
-      } else if (this.codeNum == "") {
+      } else if (this.email == "") {
         this.$notify({
           type: "info",
           position: "bottom-right",
@@ -93,7 +93,33 @@ export default {
       }
     },
     getCode() {
+      if (this.email == "" || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.email)) {
+        this.$notify({
+          type: "error",
+          position: "bottom-right",
+          message: "请正确输入邮箱哦"
+        })
+        return
+      }
+      if (this.code != '验证码') {
+        this.$notify({
+          type: "info",
+          position: "bottom-right",
+          message: "请勿重复点击"
+        })
+        return
+      }
+
       let n = 60;
+      this.$axios.post('/console/code', {
+        email: this.email
+      }).then(res => {
+        console.log(res.data);
+      })
+        .catch(() => {
+          this.$message.error('验证码发送失败');
+        })
+
       let interval = setInterval(() => {
         if (n < 0) {
           this.code = '验证码'
@@ -204,9 +230,12 @@ export default {
     align-items: center;
 
     & span {
+      text-align: center;
+      border: 1px solid #ccc;
       cursor: pointer;
       color: white;
       width: 80px;
+      padding: 5px 0;
     }
 
     & span:hover {
